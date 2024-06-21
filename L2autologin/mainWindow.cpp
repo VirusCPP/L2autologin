@@ -236,6 +236,7 @@ namespace L2autologin {
 		// 
 		this->DelayBox->Location = System::Drawing::Point(266, 76);
 		this->DelayBox->Name = L"DelayBox";
+		this->DelayBox->Text = "5000";
 		this->DelayBox->Size = System::Drawing::Size(31, 20);
 		this->DelayBox->TabIndex = 10;
 		// 
