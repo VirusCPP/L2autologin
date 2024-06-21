@@ -41,6 +41,8 @@ namespace L2autologin {
 			saveData();
 			mainWindow::accountCount++;
 		}
+		else
+			MessageBox::Show("Аккаунт с такими данными уже существует", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 	void mainWindow::ChooseFolder() {
 		if (folderBrowserDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {

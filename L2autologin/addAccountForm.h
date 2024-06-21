@@ -72,14 +72,14 @@ namespace L2autologin {
 			this->loginTextBox->Location = System::Drawing::Point(119, 30);
 			this->loginTextBox->Name = L"loginTextBox";
 			this->loginTextBox->Size = System::Drawing::Size(100, 20);
-			this->loginTextBox->TabIndex = 1;
+			this->loginTextBox->TabIndex = 2;
 			// 
 			// passwordTextBox
 			// 
 			this->passwordTextBox->Location = System::Drawing::Point(225, 30);
 			this->passwordTextBox->Name = L"passwordTextBox";
 			this->passwordTextBox->Size = System::Drawing::Size(100, 20);
-			this->passwordTextBox->TabIndex = 1;
+			this->passwordTextBox->TabIndex = 3;
 			// 
 			// loginLable
 			// 
@@ -104,7 +104,7 @@ namespace L2autologin {
 			this->okButton->Location = System::Drawing::Point(13, 81);
 			this->okButton->Name = L"okButton";
 			this->okButton->Size = System::Drawing::Size(145, 23);
-			this->okButton->TabIndex = 2;
+			this->okButton->TabIndex = 4;
 			this->okButton->Text = L"OK";
 			this->okButton->UseVisualStyleBackColor = true;
 			this->okButton->Click += gcnew System::EventHandler(this, &addAccountForm::okButton_Click);
@@ -114,7 +114,7 @@ namespace L2autologin {
 			this->cancelButton->Location = System::Drawing::Point(180, 81);
 			this->cancelButton->Name = L"cancelButton";
 			this->cancelButton->Size = System::Drawing::Size(145, 23);
-			this->cancelButton->TabIndex = 2;
+			this->cancelButton->TabIndex = 5;
 			this->cancelButton->Text = L"Cancel";
 			this->cancelButton->UseVisualStyleBackColor = true;
 			this->cancelButton->Click += gcnew System::EventHandler(this, &addAccountForm::cancelButton_Click);
@@ -139,6 +139,7 @@ namespace L2autologin {
 			this->Text = L"Добавление аккаунта";
 			this->ResumeLayout(false);
 			this->PerformLayout();
+
 		}
 #pragma endregion
 
