@@ -1,5 +1,5 @@
 #pragma once
-#include <fstream>
+#include <msclr\marshal_cppstd.h>
 namespace L2autologin {
 
 	using namespace System;
@@ -11,6 +11,8 @@ namespace L2autologin {
 	using namespace System::Drawing;
 	using namespace System::Collections::Generic;
 	using namespace System::Diagnostics;
+	using namespace	System::Security::Cryptography;
+	using namespace msclr::interop;
 
 	
 	public ref class mainWindow : public System::Windows::Forms::Form
@@ -22,6 +24,12 @@ namespace L2autologin {
 		void addPathButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void startButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static bool isAccountUnique(String^ name, String^ login);
+		static void SaveKeyAndIV(String^ fileName, array<Byte>^ key, array<Byte>^ iv);
+		static void LoadKeyAndIV(String^ fileName, array<Byte>^% key, array<Byte>^% iv);
+		static array<Byte>^ GenerateKey();
+		static array<Byte>^ GenerateIV();
+		static void Encrypt(String^ fileName);
+		static void Decrypt(String^ fileName);
 		static void savePath();
 		static void saveAcc();
 		static void loadAcc();
@@ -36,6 +44,7 @@ namespace L2autologin {
 	private: System::Windows::Forms::Button^ addPathButton;
 
 	public:
+		static String^ tempFileName;
 		static String^ pathFileName = "path.dat";
 		static String^ accFileName = "acc.dat";
 		static String^ Path;

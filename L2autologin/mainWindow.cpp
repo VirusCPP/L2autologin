@@ -69,11 +69,140 @@ namespace L2autologin {
 		}
 		return true; 
 	}
+	void mainWindow::Encrypt(String^ fileName) {
+		// Генерируем ключ и IV
+		array<Byte>^ key = GenerateKey();
+		array<Byte>^ iv = GenerateIV();
+
+		// Сохраняем ключ и IV для последующей дешифрации
+		SaveKeyAndIV("l2al.key", key, iv);
+
+		// Создаем файловый поток для чтения исходного файла
+		FileStream^ originalFileStream = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+
+		// Создаем файловый поток для записи зашифрованных данных
+		String^ encryptedFileName = fileName + ".encrypted";
+		FileStream^ encryptedFileStream = gcnew FileStream(encryptedFileName, FileMode::Create, FileAccess::Write);
+
+		// Создаем объект RijndaelManaged
+		RijndaelManaged^ rijndael = gcnew RijndaelManaged();
+
+		// Создаем криптографический поток для шифрования данных
+		CryptoStream^ cryptoStream = gcnew CryptoStream(encryptedFileStream, rijndael->CreateEncryptor(key, iv), CryptoStreamMode::Write);
+
+		try {
+			// Читаем исходный файл и шифруем его
+			array<Byte>^ buffer = gcnew array<Byte>(4096);
+			int bytesRead;
+			while ((bytesRead = originalFileStream->Read(buffer, 0, buffer->Length)) > 0) {
+				cryptoStream->Write(buffer, 0, bytesRead);
+			}
+
+			// Завершаем запись в криптографический поток
+			cryptoStream->FlushFinalBlock();
+		}
+		finally {
+			// Закрываем все потоки в блоке finally, чтобы гарантированно освободить ресурсы
+			if (cryptoStream) cryptoStream->Close();
+			if (originalFileStream) originalFileStream->Close();
+			if (encryptedFileStream) encryptedFileStream->Close();
+
+			// Заменяем исходный файл зашифрованным файлом
+			File::Delete(fileName);
+			File::Move(encryptedFileName, fileName);
+		}
+	}
+	void mainWindow::Decrypt(String^ fileName) {
+		// Путь к файлу с ключом и IV
+		String^ keyIVFileName = "l2al.key";
+
+		// Загружаем ключ и IV для дешифрации
+		array<Byte>^ key;
+		array<Byte>^ iv;
+		LoadKeyAndIV(keyIVFileName, key, iv);
+
+		// Создаем файловый поток для чтения зашифрованного файла
+		FileStream^ encryptedFileStream = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+
+		// Создаем файловый поток для записи дешифрованных данных
+		String^ decryptedFileName = fileName->Substring(0, fileName->LastIndexOf('.'));
+		FileStream^ decryptedFileStream = gcnew FileStream(decryptedFileName, FileMode::Create, FileAccess::Write);
+
+		// Создаем объект RijndaelManaged
+		RijndaelManaged^ rijndael = gcnew RijndaelManaged();
+
+		// Создаем криптографический поток для дешифрования
+		CryptoStream^ cryptoStream = gcnew CryptoStream(encryptedFileStream, rijndael->CreateDecryptor(key, iv), CryptoStreamMode::Read);
+
+		try {
+			// Читаем зашифрованные данные и дешифруем их
+			array<Byte>^ buffer = gcnew array<Byte>(4096);
+			int bytesRead;
+			while ((bytesRead = cryptoStream->Read(buffer, 0, buffer->Length)) > 0) {
+				decryptedFileStream->Write(buffer, 0, bytesRead);
+			}
+		}
+		finally {
+			// Закрываем все потоки в блоке finally, чтобы гарантированно освободить ресурсы
+			if (cryptoStream) cryptoStream->Close();
+			if (encryptedFileStream) encryptedFileStream->Close();
+			if (decryptedFileStream) decryptedFileStream->Close();
+
+			// Удаляем исходный зашифрованный файл и переименовываем расшифрованный файл
+			File::Delete(fileName);
+			File::Move(decryptedFileName, fileName);
+		}
+	}
+
+
+
+	void mainWindow::SaveKeyAndIV(String^ fileName, array<Byte>^ key, array<Byte>^ iv) {
+		FileStream^ fs = nullptr;
+		try {
+			fs = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
+			BinaryWriter^ bw = gcnew BinaryWriter(fs);
+			bw->Write(key);
+			bw->Write(iv);
+		}
+		finally {
+			if (fs) fs->Close();
+		}
+	}
+	array<Byte>^ mainWindow::GenerateKey() {
+		RijndaelManaged^ rijndael = gcnew RijndaelManaged();
+		rijndael->GenerateKey();
+		return rijndael->Key;
+	}
+
+	array<Byte>^ mainWindow::GenerateIV() {
+		RijndaelManaged^ rijndael = gcnew RijndaelManaged();
+		rijndael->GenerateIV();
+		return rijndael->IV;
+	}
+
+	void mainWindow::LoadKeyAndIV(String^ fileName, array<Byte>^% key, array<Byte>^% iv) {
+		FileStream^ fs = nullptr;
+		try {
+			fs = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+			BinaryReader^ br = gcnew BinaryReader(fs);
+			key = br->ReadBytes(32); // 256 бит для ключа
+			iv = br->ReadBytes(16);  // 128 бит для IV
+		}
+		finally {
+			if (fs) fs->Close();
+		}
+	}
+
+	
 	void mainWindow::savePath() {
 		File::WriteAllText(pathFileName, Path);
+		Encrypt(pathFileName);
 	}
 
 	void mainWindow::saveAcc() {
+		if (File::Exists(accFileName)) {
+			Decrypt(accFileName);
+		}
 		StreamWriter^ sw = gcnew StreamWriter(accFileName, false);
 
 		try {
@@ -87,9 +216,11 @@ namespace L2autologin {
 		finally {
 			sw->Close();
 		}
+		Encrypt(accFileName);
 	}
 	void mainWindow::loadPath() {
 		if (File::Exists(pathFileName)) {
+			Decrypt(pathFileName);
 			StreamReader^ sr = gcnew StreamReader(pathFileName);
 			try {
 				String^ line;
@@ -103,10 +234,12 @@ namespace L2autologin {
 			finally {
 				sr->Close();
 			}
+			Encrypt(pathFileName);
 		}
 	}
 	void mainWindow::loadAcc() {
 		if (File::Exists(accFileName)) {
+			Decrypt(accFileName);
 			StreamReader^ sr = gcnew StreamReader(accFileName);
 
 			try {
@@ -126,6 +259,7 @@ namespace L2autologin {
 			finally {
 				sr->Close();
 			}
+			Encrypt(accFileName);
 		}
 	}
 
