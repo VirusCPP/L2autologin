@@ -141,11 +141,9 @@ namespace L2autologin {
 				proc->Start();
 			}
 		}
-
 	}
 
-	void mainWindow::InitializeComponent(void)
-	{
+	void mainWindow::InitializeComponent(){
 		this->accountNames = (gcnew System::Windows::Forms::CheckedListBox());
 		this->removeButton = (gcnew System::Windows::Forms::Button());
 		this->addButton = (gcnew System::Windows::Forms::Button());
@@ -231,6 +229,5 @@ namespace L2autologin {
 		this->Text = L"L2 јвтоЋогин";
 		this->ResumeLayout(false);
 		this->PerformLayout();
-
 	}
 }

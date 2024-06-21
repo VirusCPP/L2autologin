@@ -10,9 +10,7 @@ namespace L2autologin {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// —водка дл€ addAccountForm
-	/// </summary>
+	
 	public ref class addAccountForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -20,15 +18,10 @@ namespace L2autologin {
 		addAccountForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// ќсвободить все используемые ресурсы.
-		/// </summary>
+		
 		~addAccountForm()
 		{
 			if (components)
@@ -37,7 +30,6 @@ namespace L2autologin {
 			}
 		}
 	public: System::Windows::Forms::Label^ nameLable;
-	protected:
 	public: System::Windows::Forms::TextBox^ nameTextBox;
 	public: System::Windows::Forms::TextBox^ loginTextBox;
 	public: System::Windows::Forms::TextBox^ passwordTextBox;
@@ -45,20 +37,10 @@ namespace L2autologin {
 	public: System::Windows::Forms::Label^ passwordLable;
 	public: System::Windows::Forms::Button^ okButton;
 	public: System::Windows::Forms::Button^ cancelButton;
-	public:
-	private:
-		/// <summary>
-		/// ќб€зательна€ переменна€ конструктора.
-		/// </summary>
-		System::ComponentModel::Container ^components;
+	private:System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
-		/// содержимое этого метода с помощью редактора кода.
-		/// </summary>
-		void InitializeComponent(void)
-		{
+		void InitializeComponent(){
 			this->nameLable = (gcnew System::Windows::Forms::Label());
 			this->nameTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->loginTextBox = (gcnew System::Windows::Forms::TextBox());

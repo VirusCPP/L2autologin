@@ -32,12 +32,8 @@ namespace L2autologin {
 	private: System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
 	private: System::Windows::Forms::Button^ startButton;
 	public: static System::Windows::Forms::TextBox^ PathBox;
-	private:
-
-	private:
 
 	private: System::Windows::Forms::Button^ addPathButton;
-
 
 	public:
 		static String^ pathFileName = "path.dat";
@@ -62,12 +58,6 @@ namespace L2autologin {
 			}
 		}
 	public: static System::Windows::Forms::CheckedListBox^ accountNames;
-	protected:
-
-	protected:
-
-	protected:
-
 	public: System::Windows::Forms::Button^ removeButton;
 	public: System::Windows::Forms::Button^ addButton;
 	public: System::ComponentModel::Container ^components;
