@@ -95,7 +95,7 @@ namespace L2autologin {
 				String^ line;
 				while ((line = sr->ReadLine()) != nullptr) {
 					if (line->StartsWith("[Path] = ")) {
-						String^ path = line->Substring(10);
+						String^ path = line->Substring(9);
 						Path = path;
 						PathBox->Text = Path;
 					}
