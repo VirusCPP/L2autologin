@@ -143,8 +143,9 @@ namespace L2autologin {
 			if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
 				String^ parm1 = account::accArray[i]->Login;
 				String^ parm2 = account::accArray[i]->Password;
-				proc->StartInfo->Arguments = "account=" + parm1 + " " + "password" + parm2;
+				proc->StartInfo->Arguments = "account=" + parm1 + " " + "password=" + parm2;
 				proc->Start();
+				System::Threading::Thread::Sleep(1000);
 			}
 		}
 	}
