@@ -71,10 +71,10 @@ namespace L2autologin {
 	}
 	void mainWindow::saveData() {
 		StreamWriter^ sw = gcnew StreamWriter(pathFileName, false);
-
+		sw->WriteLine("[Path] = " + Path);
 		try {
 			for (int i = 0; i < account::accArray->Count; i++) {
-				sw->WriteLine("[Path] = " + Path);
+				
 				sw->WriteLine();
 				sw->WriteLine("[Account Name] = " + account::accArray[i]->Name);
 				sw->WriteLine("[Account Login] = " + account::accArray[i]->Login);
@@ -95,25 +95,23 @@ namespace L2autologin {
 				String^ line;
 				while ((line = sr->ReadLine()) != nullptr) {
 					if (line->StartsWith("[Path] = ")) {
-						String^ path = line->Substring(8);
+						String^ path = line->Substring(10);
 						Path = path;
 						PathBox->Text = Path;
 					}
 					else if (line->StartsWith("[Account Name] = ")) {
-						String^ name = line->Substring(16);
+						String^ name = line->Substring(17);
 						String^ login = sr->ReadLine();
 						if (login != nullptr && login->StartsWith("[Account Login] = ")) {
-							login = login->Substring(17);
+							login = login->Substring(18);
 						}
 						else {
 		
 							continue;
-						}
-
-						
+						}			
 						String^ password = sr->ReadLine();
 						if (password != nullptr && password->StartsWith("[Account Password] = ")) {
-							password = password->Substring(19); 
+							password = password->Substring(21); 
 						}
 						else {
 							
