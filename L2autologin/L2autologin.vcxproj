@@ -122,7 +122,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="account.cpp" />
     <ClCompile Include="addAccountForm.cpp" />
     <ClCompile Include="mainWindow.cpp" />
   </ItemGroup>
