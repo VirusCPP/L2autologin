@@ -9,7 +9,7 @@ namespace L2autologin {
 	{
 		Application::EnableVisualStyles();
 		Application::SetCompatibleTextRenderingDefault(false);
-		mainWindow^ mainWindowInstance = gcnew L2autologin::mainWindow();
+		mainWindow^ mainWindowInstance = gcnew mainWindow(); // создаем экземпляр mainWindow
 		Application::Run(mainWindowInstance);
 	}
 
@@ -137,6 +137,8 @@ namespace L2autologin {
 
 	void mainWindow::startButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		Process^ proc = gcnew Process();
+		int delay;
+		Int32::TryParse(DelayBox->Text, delay);
 		proc->StartInfo->WorkingDirectory = Path;
 		proc->StartInfo->FileName = Path + "\\L2.exe";
 		for (int i = accountNames->Items->Count - 1; i >= 0; i--) {
@@ -145,7 +147,7 @@ namespace L2autologin {
 				String^ parm2 = account::accArray[i]->Password;
 				proc->StartInfo->Arguments = "account=" + parm1 + " " + "password=" + parm2;
 				proc->Start();
-				System::Threading::Thread::Sleep(1000);
+				System::Threading::Thread::Sleep(delay); // задержка в delay миллисекунд
 			}
 		}
 	}
@@ -158,6 +160,9 @@ namespace L2autologin {
 		this->startButton = (gcnew System::Windows::Forms::Button());
 		this->PathBox = (gcnew System::Windows::Forms::TextBox());
 		this->addPathButton = (gcnew System::Windows::Forms::Button());
+		this->label1 = (gcnew System::Windows::Forms::Label());
+		this->DelayBox = (gcnew System::Windows::Forms::TextBox());
+		this->label2 = (gcnew System::Windows::Forms::Label());
 		this->SuspendLayout();
 		// 
 		// accountNames
@@ -218,11 +223,39 @@ namespace L2autologin {
 		this->addPathButton->UseVisualStyleBackColor = true;
 		this->addPathButton->Click += gcnew System::EventHandler(this, &mainWindow::addPathButton_Click);
 		// 
+		// label1
+		// 
+		this->label1->AutoSize = true;
+		this->label1->Location = System::Drawing::Point(202, 79);
+		this->label1->Name = L"label1";
+		this->label1->Size = System::Drawing::Size(58, 13);
+		this->label1->TabIndex = 9;
+		this->label1->Text = L"Задержка";
+		// 
+		// DelayBox
+		// 
+		this->DelayBox->Location = System::Drawing::Point(266, 76);
+		this->DelayBox->Name = L"DelayBox";
+		this->DelayBox->Size = System::Drawing::Size(31, 20);
+		this->DelayBox->TabIndex = 10;
+		// 
+		// label2
+		// 
+		this->label2->AutoSize = true;
+		this->label2->Location = System::Drawing::Point(303, 79);
+		this->label2->Name = L"label2";
+		this->label2->Size = System::Drawing::Size(22, 13);
+		this->label2->TabIndex = 11;
+		this->label2->Text = L"Мс";
+		// 
 		// mainWindow
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 		this->ClientSize = System::Drawing::Size(483, 169);
+		this->Controls->Add(this->label2);
+		this->Controls->Add(this->DelayBox);
+		this->Controls->Add(this->label1);
 		this->Controls->Add(this->addPathButton);
 		this->Controls->Add(this->PathBox);
 		this->Controls->Add(this->startButton);
@@ -236,5 +269,6 @@ namespace L2autologin {
 		this->Text = L"L2 АвтоЛогин";
 		this->ResumeLayout(false);
 		this->PerformLayout();
+
 	}
 }

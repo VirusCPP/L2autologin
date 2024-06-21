@@ -18,6 +18,7 @@ namespace L2autologin {
 	public ref class mainWindow : public System::Windows::Forms::Form
 	{
 	public:
+		static int accountCount = 0;
 		void removebutton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addbutton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
@@ -26,20 +27,23 @@ namespace L2autologin {
 		static bool isAccountUnique(String^ name, String^ login);
 		static void saveData();
 		static void loadData();
-		void checkPathStatus();
+		static void checkPathStatus();
 		void InitializeComponent();
-		void ChooseFolder();
-	private: System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
-	private: System::Windows::Forms::Button^ startButton;
+		static void ChooseFolder();
+	    static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
+	    static System::Windows::Forms::Button^ startButton;
 	public: static System::Windows::Forms::TextBox^ PathBox;
-
 	private: System::Windows::Forms::Button^ addPathButton;
 
 	public:
 		static String^ tempFileName;
 		static String^ pathFileName = "Data.ini";
 		static String^ Path;
-		static int accountCount = 0;
+	private: System::Windows::Forms::Label^ label1;
+	public:
+	private: System::Windows::Forms::TextBox^ DelayBox;
+	private: System::Windows::Forms::Label^ label2;
+	public:	   
 		mainWindow(void)
 		{
 			InitializeComponent();
