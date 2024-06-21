@@ -24,16 +24,8 @@ namespace L2autologin {
 		void addPathButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void startButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static bool isAccountUnique(String^ name, String^ login);
-		static void SaveKeyAndIV(String^ fileName, array<Byte>^ key, array<Byte>^ iv);
-		static void LoadKeyAndIV(String^ fileName, array<Byte>^% key, array<Byte>^% iv);
-		static array<Byte>^ GenerateKey();
-		static array<Byte>^ GenerateIV();
-		static void Encrypt(String^ fileName);
-		static void Decrypt(String^ fileName);
-		static void savePath();
-		static void saveAcc();
-		static void loadAcc();
-		static void loadPath();
+		static void saveData();
+		static void loadData();
 		void checkPathStatus();
 		void InitializeComponent();
 		void ChooseFolder();
@@ -45,16 +37,13 @@ namespace L2autologin {
 
 	public:
 		static String^ tempFileName;
-		static String^ pathFileName = "path.dat";
-		static String^ accFileName = "acc.dat";
+		static String^ pathFileName = "Data.ini";
 		static String^ Path;
 		static int accountCount = 0;
 		mainWindow(void)
 		{
 			InitializeComponent();
-			
-			loadAcc();
-			loadPath();
+			loadData();
 			checkPathStatus();
 		}
 
