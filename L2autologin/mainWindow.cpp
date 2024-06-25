@@ -60,7 +60,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::checkPathStatus() {
-		if (Path == nullptr)
+		if (PathBox->Text == "")
 			startButton->Enabled = false;
 		else
 			startButton->Enabled = true;
