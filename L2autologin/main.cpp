@@ -2,8 +2,6 @@
 #include "addAccountForm.h"
 
 namespace L2autologin {
-	using namespace System;
-	using namespace System::Windows::Forms;
 	[STAThread]
 		void main(array<String^>^ args)
 	{
