@@ -2,6 +2,15 @@
 #include "addAccountForm.h"
 
 namespace L2autologin {
+
+	void mainWindow::textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e)
+	{
+		if (!Char::IsDigit(e->KeyChar) && e->KeyChar != '\b')
+		{
+			e->Handled = true;
+		}
+	}
+
 	void mainWindow::addPathButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		chooseFolder();
 	}

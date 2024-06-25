@@ -37,6 +37,7 @@ namespace L2autologin {
 		static void chooseFolder();
 		static void saveProfile();
 		static void loadProfile();
+		void textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e);
 		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
 		static System::Windows::Forms::Button^ startButton;
 		static System::Windows::Forms::TextBox^ PathBox;

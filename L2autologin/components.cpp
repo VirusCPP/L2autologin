@@ -93,6 +93,7 @@ namespace L2autologin {
 		this->DelayBox->Size = System::Drawing::Size(52, 20);
 		this->DelayBox->TabIndex = 10;
 		this->DelayBox->Text = L"5000";
+		this->DelayBox->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &mainWindow::textBox_KeyPress);
 		// 
 		// label2
 		// 
@@ -105,6 +106,7 @@ namespace L2autologin {
 		// 
 		// profileComboBox
 		// 
+		this->profileComboBox->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 		this->profileComboBox->FormattingEnabled = true;
 		this->profileComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
 			L"[Profile 1]", L"[Profile 2]", L"[Profile 3]",
