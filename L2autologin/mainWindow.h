@@ -38,12 +38,18 @@ namespace L2autologin {
 		static void saveProfile();
 		static void loadProfile();
 		void textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e);
-		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
-		static System::Windows::Forms::Button^ startButton;
-		static System::Windows::Forms::TextBox^ PathBox;
-		static System::Windows::Forms::TextBox^ DelayBox;
-		static System::Windows::Forms::CheckedListBox^ accountNames;
-		static System::Windows::Forms::ComboBox^ profileComboBox;
+	public: System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
+	public: System::Windows::Forms::Button^ startButton;
+	public: System::Windows::Forms::TextBox^ PathBox;
+	public: System::Windows::Forms::TextBox^ DelayBox;
+	public: System::Windows::Forms::CheckedListBox^ accountNames;
+	public: System::Windows::Forms::ComboBox^ profileComboBox;
+
+
+
+
+
+
 		static String^ tempFileName;
 		static String^ pathFileName = "Data.ini";
 		static String^ profileFileName = "Profile.ini";

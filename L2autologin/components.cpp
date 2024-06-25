@@ -82,13 +82,13 @@ namespace L2autologin {
 		this->label1->AutoSize = true;
 		this->label1->Location = System::Drawing::Point(202, 79);
 		this->label1->Name = L"label1";
-		this->label1->Size = System::Drawing::Size(58, 13);
+		this->label1->Size = System::Drawing::Size(173, 13);
 		this->label1->TabIndex = 9;
-		this->label1->Text = L"Задержка";
+		this->label1->Text = L"Задержка между запуском окон";
 		// 
 		// DelayBox
 		// 
-		this->DelayBox->Location = System::Drawing::Point(266, 76);
+		this->DelayBox->Location = System::Drawing::Point(383, 76);
 		this->DelayBox->Name = L"DelayBox";
 		this->DelayBox->Size = System::Drawing::Size(52, 20);
 		this->DelayBox->TabIndex = 10;
@@ -98,7 +98,7 @@ namespace L2autologin {
 		// label2
 		// 
 		this->label2->AutoSize = true;
-		this->label2->Location = System::Drawing::Point(324, 79);
+		this->label2->Location = System::Drawing::Point(441, 79);
 		this->label2->Name = L"label2";
 		this->label2->Size = System::Drawing::Size(22, 13);
 		this->label2->TabIndex = 11;
@@ -112,14 +112,14 @@ namespace L2autologin {
 			L"[Profile 1]", L"[Profile 2]", L"[Profile 3]",
 				L"[Profile 4]", L"[Profile 5]"
 		});
-		this->profileComboBox->Location = System::Drawing::Point(505, 13);
+		this->profileComboBox->Location = System::Drawing::Point(483, 14);
 		this->profileComboBox->Name = L"profileComboBox";
 		this->profileComboBox->Size = System::Drawing::Size(171, 21);
 		this->profileComboBox->TabIndex = 12;
 		// 
 		// saveProfileButton
 		// 
-		this->saveProfileButton->Location = System::Drawing::Point(505, 74);
+		this->saveProfileButton->Location = System::Drawing::Point(483, 74);
 		this->saveProfileButton->Name = L"saveProfileButton";
 		this->saveProfileButton->Size = System::Drawing::Size(171, 23);
 		this->saveProfileButton->TabIndex = 13;
@@ -129,7 +129,7 @@ namespace L2autologin {
 		// 
 		// loadProfileButton
 		// 
-		this->loadProfileButton->Location = System::Drawing::Point(505, 41);
+		this->loadProfileButton->Location = System::Drawing::Point(483, 41);
 		this->loadProfileButton->Name = L"loadProfileButton";
 		this->loadProfileButton->Size = System::Drawing::Size(171, 23);
 		this->loadProfileButton->TabIndex = 14;
@@ -141,7 +141,7 @@ namespace L2autologin {
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-		this->ClientSize = System::Drawing::Size(688, 169);
+		this->ClientSize = System::Drawing::Size(662, 169);
 		this->Controls->Add(this->loadProfileButton);
 		this->Controls->Add(this->saveProfileButton);
 		this->Controls->Add(this->profileComboBox);
@@ -154,8 +154,6 @@ namespace L2autologin {
 		this->Controls->Add(this->addButton);
 		this->Controls->Add(this->removeButton);
 		this->Controls->Add(this->accountNames);
-		this->MaximumSize = System::Drawing::Size(704, 208);
-		this->MinimumSize = System::Drawing::Size(704, 208);
 		this->Name = L"mainWindow";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 		this->Text = L"L2 АвтоЛогин by VirusCPP";
