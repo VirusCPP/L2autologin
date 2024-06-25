@@ -76,8 +76,10 @@ namespace L2autologin {
 	}
 
 	void mainWindow::saveProfile() {
-		StreamWriter^ sw = gcnew StreamWriter(profileFileName, true);
-		sw->Close();
+		if (!File::Exists(profileFileName)) {
+			StreamWriter^ sw = gcnew StreamWriter(profileFileName, true);
+			sw->Close();
+		}
 		if (accountNames->CheckedItems->Count != 0) {
 			String^ profileText = profileComboBox->Text;
 
@@ -186,6 +188,7 @@ namespace L2autologin {
 			}
 			finally {
 				sr->Close();
+				
 			}
 		}
 	}
