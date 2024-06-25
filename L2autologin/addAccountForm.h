@@ -20,17 +20,6 @@ namespace L2autologin {
 		{
 			InitializeComponent();
 		}
-
-	protected:
-		
-		~addAccountForm()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
-	public: 
 		System::Windows::Forms::Label^ nameLable;
 		System::Windows::Forms::TextBox^ nameTextBox;
 		System::Windows::Forms::TextBox^ loginTextBox;
@@ -39,6 +28,16 @@ namespace L2autologin {
 		System::Windows::Forms::Label^ passwordLable;
 		System::Windows::Forms::Button^ okButton;
 		System::Windows::Forms::Button^ cancelButton;
+
+	protected:
+		~addAccountForm()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+
 	private:System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code

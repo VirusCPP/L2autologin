@@ -65,8 +65,8 @@ namespace L2autologin {
 		}
 		return true;
 	}
+
 	void mainWindow::saveProfile() {
-		
 		StreamWriter^ sw = gcnew StreamWriter(profileFileName, true);
 		sw->Close();
 		if (accountNames->CheckedItems->Count != 0) {

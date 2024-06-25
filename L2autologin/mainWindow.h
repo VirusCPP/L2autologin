@@ -17,7 +17,14 @@ namespace L2autologin {
 	
 	public ref class mainWindow : public System::Windows::Forms::Form
 	{
+
 	public:
+		mainWindow(void)
+		{
+			InitializeComponent();
+			loadData();
+			checkPathStatus();
+		}
 		static int delay;
 		void removebutton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addbutton_Click(System::Object^ sender, System::EventArgs^ e);
@@ -43,21 +50,9 @@ namespace L2autologin {
 		static String^ pathFileName = "Data.ini";
 		static String^ profileFileName = "Profile.ini";
 		static String^ Path;
-	
-
-	private: 
-		System::Windows::Forms::Label^ label1;
-		System::Windows::Forms::Label^ label2;
-		System::Windows::Forms::Button^ saveProfileButton;
-		System::Windows::Forms::Button^ loadProfileButton;
-		System::Windows::Forms::Button^ addPathButton;
-	public:	   
-		mainWindow(void)
-		{
-			InitializeComponent();
-			loadData();
-			checkPathStatus();
-		}
+		System::Windows::Forms::Button^ removeButton;
+		System::Windows::Forms::Button^ addButton;
+		System::ComponentModel::Container^ components;
 
 	protected:
 		~mainWindow()
@@ -67,9 +62,13 @@ namespace L2autologin {
 				delete components;
 			}
 		}
-	public: System::Windows::Forms::Button^ removeButton;
-	public: System::Windows::Forms::Button^ addButton;
-	public: System::ComponentModel::Container ^components;
+
+	private: 
+		System::Windows::Forms::Label^ label1;
+		System::Windows::Forms::Label^ label2;
+		System::Windows::Forms::Button^ saveProfileButton;
+		System::Windows::Forms::Button^ loadProfileButton;
+		System::Windows::Forms::Button^ addPathButton;
 
 #pragma region Windows Form Designer generated code
 	
