@@ -79,7 +79,11 @@ namespace L2autologin {
 				while ((line = sr->ReadLine()) != nullptr) {
 					if (line->StartsWith(profileText)) {
 						profileFound = true;
+
+						// Добавляем строку профиля
 						fileLines->Add(profileText);
+
+						// Создаем строку для индексов
 						String^ indices = "";
 						for (int i = 0; i < account::accArray->Count; i++) {
 							if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
@@ -87,7 +91,16 @@ namespace L2autologin {
 							}
 						}
 						fileLines->Add(indices->Trim());
-						sr->ReadLine();
+
+						// Добавляем значение из DelayBox
+						fileLines->Add(DelayBox->Text);
+
+						// Пропускаем старую строку индексов и DelayBox
+						sr->ReadLine(); // Пропускаем строку индексов
+						sr->ReadLine(); // Пропускаем старую строку DelayBox
+
+						// Переходим к следующей строке, чтобы не добавлять старую информацию
+						continue;
 					}
 					else {
 						fileLines->Add(line);
@@ -95,7 +108,10 @@ namespace L2autologin {
 				}
 
 				if (!profileFound) {
+					// Добавляем новый профиль, если он не был найден
 					fileLines->Add(profileText);
+
+					// Создаем строку для индексов
 					String^ indices = "";
 					for (int i = 0; i < account::accArray->Count; i++) {
 						if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
@@ -103,14 +119,18 @@ namespace L2autologin {
 						}
 					}
 					fileLines->Add(indices->Trim());
-					fileLines->Add("");
+
+					// Добавляем значение из DelayBox
+					fileLines->Add(DelayBox->Text);
+
+					fileLines->Add(""); // Добавляем пустую строку для перехода на новую строку
 				}
 			}
 			finally {
 				sr->Close();
 			}
 
-			StreamWriter^ sw = gcnew StreamWriter(profileFileName, false);
+			StreamWriter^ sw = gcnew StreamWriter(profileFileName, false); // Перезаписываем файл
 
 			try {
 				for each (String ^ fileLine in fileLines) {
@@ -122,6 +142,7 @@ namespace L2autologin {
 			}
 		}
 	}
+
 
 
 
@@ -148,6 +169,7 @@ namespace L2autologin {
 								}
 							}
 						}
+						DelayBox->Text = sr->ReadLine();
 					}
 				}
 			}
@@ -217,7 +239,6 @@ namespace L2autologin {
 
 	void mainWindow::launchApp() {
 		Process^ proc = gcnew Process();
-		int delay;
 		Int32::TryParse(DelayBox->Text, delay);
 		proc->StartInfo->FileName = Path + "\\L2.exe";
 		if (accountNames->CheckedItems->Count != 0) {

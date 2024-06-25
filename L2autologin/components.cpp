@@ -107,8 +107,8 @@ namespace L2autologin {
 		// 
 		this->profileComboBox->FormattingEnabled = true;
 		this->profileComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-			L"Профиль 1", L"Профиль 2", L"Профиль 3",
-				L"Профиль 4", L"Профиль 5"
+			L"[Profile 1]", L"[Profile 2]", L"[Profile 3]",
+				L"[Profile 4]", L"[Profile 5]"
 		});
 		this->profileComboBox->Location = System::Drawing::Point(505, 13);
 		this->profileComboBox->Name = L"profileComboBox";

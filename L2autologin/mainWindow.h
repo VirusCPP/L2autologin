@@ -18,6 +18,7 @@ namespace L2autologin {
 	public ref class mainWindow : public System::Windows::Forms::Form
 	{
 	public:
+		static int delay;
 		void removebutton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addbutton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
