@@ -154,6 +154,8 @@ namespace L2autologin {
 		this->Controls->Add(this->addButton);
 		this->Controls->Add(this->removeButton);
 		this->Controls->Add(this->accountNames);
+		this->MaximumSize = System::Drawing::Size(678, 208);
+		this->MinimumSize = System::Drawing::Size(678, 208);
 		this->Name = L"mainWindow";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 		this->Text = L"L2 јвтоЋогин by VirusCPP";
