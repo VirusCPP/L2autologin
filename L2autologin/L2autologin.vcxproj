@@ -122,6 +122,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="components.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="mainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>

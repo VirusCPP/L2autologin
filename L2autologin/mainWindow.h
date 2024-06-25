@@ -25,11 +25,12 @@ namespace L2autologin {
 		void addPathButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void startButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static bool isAccountUnique(String^ name, String^ login);
+		static void launchApp();
 		static void saveData();
 		static void loadData();
 		static void checkPathStatus();
 		void InitializeComponent();
-		static void ChooseFolder();
+		static void chooseFolder();
 	    static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
 	    static System::Windows::Forms::Button^ startButton;
 	public: static System::Windows::Forms::TextBox^ PathBox;
@@ -39,9 +40,8 @@ namespace L2autologin {
 		static String^ tempFileName;
 		static String^ pathFileName = "Data.ini";
 		static String^ Path;
+		static System::Windows::Forms::TextBox^ DelayBox;
 	private: System::Windows::Forms::Label^ label1;
-	public:
-	private: System::Windows::Forms::TextBox^ DelayBox;
 	private: System::Windows::Forms::Label^ label2;
 	public:	   
 		mainWindow(void)
