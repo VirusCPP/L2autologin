@@ -33,49 +33,24 @@ namespace L2autologin {
 		static void chooseFolder();
 		static void saveProfile();
 		static void loadProfile();
-	public: static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
-	public: static System::Windows::Forms::Button^ startButton;
-	public: static System::Windows::Forms::TextBox^ PathBox;
-	public: static System::Windows::Forms::TextBox^ DelayBox;
-	public: static System::Windows::Forms::CheckedListBox^ accountNames;
-	public: static System::Windows::Forms::ComboBox^ profileComboBox;
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	public:
+		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
+		static System::Windows::Forms::Button^ startButton;
+		static System::Windows::Forms::TextBox^ PathBox;
+		static System::Windows::Forms::TextBox^ DelayBox;
+		static System::Windows::Forms::CheckedListBox^ accountNames;
+		static System::Windows::Forms::ComboBox^ profileComboBox;
 		static String^ tempFileName;
 		static String^ pathFileName = "Data.ini";
 		static String^ profileFileName = "Profile.ini";
 		static String^ Path;
 	
 
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	
-	private:
-
-	private: System::Windows::Forms::Button^ saveProfileButton;
-	private: System::Windows::Forms::Button^ loadProfileButton;
-	
-	public:
-	private:
-
-
-	public:
-
-
-
-	private: System::Windows::Forms::Button^ addPathButton;
+	private: 
+		System::Windows::Forms::Label^ label1;
+		System::Windows::Forms::Label^ label2;
+		System::Windows::Forms::Button^ saveProfileButton;
+		System::Windows::Forms::Button^ loadProfileButton;
+		System::Windows::Forms::Button^ addPathButton;
 	public:	   
 		mainWindow(void)
 		{
@@ -92,11 +67,6 @@ namespace L2autologin {
 				delete components;
 			}
 		}
-	
-	protected:
-
-	protected:
-
 	public: System::Windows::Forms::Button^ removeButton;
 	public: System::Windows::Forms::Button^ addButton;
 	public: System::ComponentModel::Container ^components;

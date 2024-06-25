@@ -156,7 +156,7 @@ namespace L2autologin {
 		this->MinimumSize = System::Drawing::Size(704, 208);
 		this->Name = L"mainWindow";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-		this->Text = L"L2 јвтоЋогин";
+		this->Text = L"L2 јвтоЋогин by VirusCPP";
 		this->ResumeLayout(false);
 		this->PerformLayout();
 
