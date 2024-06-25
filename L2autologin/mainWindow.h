@@ -11,9 +11,6 @@ namespace L2autologin {
 	using namespace System::Drawing;
 	using namespace System::Collections::Generic;
 	using namespace System::Diagnostics;
-	using namespace	System::Security::Cryptography;
-	using namespace msclr::interop;
-
 	
 	public ref class mainWindow : public System::Windows::Forms::Form
 	{
