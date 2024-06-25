@@ -66,21 +66,52 @@ namespace L2autologin {
 		return true;
 	}
 	void mainWindow::saveProfile() {
-		String^ profileText = profileComboBox->Text;
+		StreamWriter^ sw = gcnew StreamWriter(profileFileName, false);
+		sw->Close();
+		if (accountNames->CheckedItems->Count != 0) {
+			String^ profileText = profileComboBox->Text;
 
-		if (profileText != "") {
-			StreamReader^ sr = gcnew StreamReader(profileFileName);
-			List<String^>^ fileLines = gcnew List<String^>();
+			if (profileText != "") {
+				StreamReader^ sr = gcnew StreamReader(profileFileName);
+				List<String^>^ fileLines = gcnew List<String^>();
 
-			try {
-				String^ line;
-				bool profileFound = false;
+				try {
+					String^ line;
+					bool profileFound = false;
 
-				while ((line = sr->ReadLine()) != nullptr) {
-					if (line->StartsWith(profileText)) {
-						profileFound = true;
+					while ((line = sr->ReadLine()) != nullptr) {
+						if (line->StartsWith(profileText)) {
+							profileFound = true;
 
-						// Добавляем строку профиля
+							// Добавляем строку профиля
+							fileLines->Add(profileText);
+
+							// Создаем строку для индексов
+							String^ indices = "";
+							for (int i = 0; i < account::accArray->Count; i++) {
+								if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
+									indices += i.ToString() + " ";
+								}
+							}
+							fileLines->Add(indices->Trim());
+
+							// Добавляем значение из DelayBox
+							fileLines->Add(DelayBox->Text);
+
+							// Пропускаем старую строку индексов и DelayBox
+							sr->ReadLine(); // Пропускаем строку индексов
+							sr->ReadLine(); // Пропускаем старую строку DelayBox
+
+							// Переходим к следующей строке, чтобы не добавлять старую информацию
+							continue;
+						}
+						else {
+							fileLines->Add(line);
+						}
+					}
+
+					if (!profileFound) {
+						// Добавляем новый профиль, если он не был найден
 						fileLines->Add(profileText);
 
 						// Создаем строку для индексов
@@ -95,50 +126,23 @@ namespace L2autologin {
 						// Добавляем значение из DelayBox
 						fileLines->Add(DelayBox->Text);
 
-						// Пропускаем старую строку индексов и DelayBox
-						sr->ReadLine(); // Пропускаем строку индексов
-						sr->ReadLine(); // Пропускаем старую строку DelayBox
-
-						// Переходим к следующей строке, чтобы не добавлять старую информацию
-						continue;
-					}
-					else {
-						fileLines->Add(line);
+						fileLines->Add(""); // Добавляем пустую строку для перехода на новую строку
 					}
 				}
+				finally {
+					sr->Close();
+				}
 
-				if (!profileFound) {
-					// Добавляем новый профиль, если он не был найден
-					fileLines->Add(profileText);
+				StreamWriter^ sw = gcnew StreamWriter(profileFileName, false); // Перезаписываем файл
 
-					// Создаем строку для индексов
-					String^ indices = "";
-					for (int i = 0; i < account::accArray->Count; i++) {
-						if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
-							indices += i.ToString() + " ";
-						}
+				try {
+					for each (String ^ fileLine in fileLines) {
+						sw->WriteLine(fileLine);
 					}
-					fileLines->Add(indices->Trim());
-
-					// Добавляем значение из DelayBox
-					fileLines->Add(DelayBox->Text);
-
-					fileLines->Add(""); // Добавляем пустую строку для перехода на новую строку
 				}
-			}
-			finally {
-				sr->Close();
-			}
-
-			StreamWriter^ sw = gcnew StreamWriter(profileFileName, false); // Перезаписываем файл
-
-			try {
-				for each (String ^ fileLine in fileLines) {
-					sw->WriteLine(fileLine);
+				finally {
+					sw->Close();
 				}
-			}
-			finally {
-				sw->Close();
 			}
 		}
 	}
