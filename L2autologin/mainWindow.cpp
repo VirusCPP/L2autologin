@@ -247,20 +247,26 @@ namespace L2autologin {
 		Process^ proc = gcnew Process();
 		Int32::TryParse(DelayBox->Text, delay);
 		proc->StartInfo->FileName = Path + "\\L2.exe";
-		if (accountNames->CheckedItems->Count != 0) {
-			for (int i = 0; i < account::accArray->Count; i++) {
-				if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
-					accountNames->SetItemCheckState(i, CheckState::Unchecked);
-					String^ parm1 = account::accArray[i]->Login;
-					String^ parm2 = account::accArray[i]->Password;
-					proc->StartInfo->Arguments = "account=" + parm1 + " " + "password=" + parm2;
-					proc->Start();
-					System::Threading::Thread::Sleep(delay);
+		try {
+			if (accountNames->CheckedItems->Count != 0) {
+				for (int i = 0; i < account::accArray->Count; i++) {
+					if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
+						accountNames->SetItemCheckState(i, CheckState::Unchecked);
+						String^ parm1 = account::accArray[i]->Login;
+						String^ parm2 = account::accArray[i]->Password;
+						proc->StartInfo->Arguments = "account=" + parm1 + " " + "password=" + parm2;
+						proc->Start();
+						System::Threading::Thread::Sleep(delay);
+					}
 				}
 			}
+
+			else {
+				proc->Start();
+			}
 		}
-		else {
-			proc->Start();
+		catch (...) {
+			MessageBox::Show("Не найден файл L2.exe, проверьте путь до папки System", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 }
