@@ -18,7 +18,6 @@ namespace L2autologin {
 	public ref class mainWindow : public System::Windows::Forms::Form
 	{
 	public:
-		static int accountCount = 0;
 		void removebutton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addbutton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
@@ -33,9 +32,8 @@ namespace L2autologin {
 		static void chooseFolder();
 	    static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
 	    static System::Windows::Forms::Button^ startButton;
-	public: static System::Windows::Forms::TextBox^ PathBox;
-	private: System::Windows::Forms::Button^ addPathButton;
-
+		static System::Windows::Forms::TextBox^ PathBox;
+	
 	public:
 		static String^ tempFileName;
 		static String^ pathFileName = "Data.ini";
@@ -43,6 +41,7 @@ namespace L2autologin {
 		static System::Windows::Forms::TextBox^ DelayBox;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Button^ addPathButton;
 	public:	   
 		mainWindow(void)
 		{
