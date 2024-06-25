@@ -143,9 +143,6 @@ namespace L2autologin {
 		}
 	}
 
-
-
-
 	void mainWindow::loadProfile() {
 		if (File::Exists(profileFileName)) {
 			if (accountNames->CheckedItems->Count != 0) {
