@@ -30,17 +30,50 @@ namespace L2autologin {
 		static void checkPathStatus();
 		void InitializeComponent();
 		static void chooseFolder();
-	    static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
-	    static System::Windows::Forms::Button^ startButton;
-		static System::Windows::Forms::TextBox^ PathBox;
+		static void saveProfile();
+		static void loadProfile();
+	public: static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
+	public: static System::Windows::Forms::Button^ startButton;
+	public: static System::Windows::Forms::TextBox^ PathBox;
+	public: static System::Windows::Forms::TextBox^ DelayBox;
+	public: static System::Windows::Forms::CheckedListBox^ accountNames;
+	public: static System::Windows::Forms::ComboBox^ profileComboBox;
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	public:
 		static String^ tempFileName;
 		static String^ pathFileName = "Data.ini";
+		static String^ profileFileName = "Profile.ini";
 		static String^ Path;
-		static System::Windows::Forms::TextBox^ DelayBox;
+	
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
+	
+	private:
+
+	private: System::Windows::Forms::Button^ saveProfileButton;
+	private: System::Windows::Forms::Button^ loadProfileButton;
+	
+	public:
+	private:
+
+
+	public:
+
+
+
 	private: System::Windows::Forms::Button^ addPathButton;
 	public:	   
 		mainWindow(void)
@@ -58,7 +91,11 @@ namespace L2autologin {
 				delete components;
 			}
 		}
-	public: static System::Windows::Forms::CheckedListBox^ accountNames;
+	
+	protected:
+
+	protected:
+
 	public: System::Windows::Forms::Button^ removeButton;
 	public: System::Windows::Forms::Button^ addButton;
 	public: System::ComponentModel::Container ^components;
@@ -67,5 +104,11 @@ namespace L2autologin {
 	
 #pragma endregion
 	
+	private: System::Void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		loadProfile();
+	}
+	private: System::Void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		saveProfile();
+	}
 	};
 }

@@ -65,7 +65,97 @@ namespace L2autologin {
 		}
 		return true;
 	}
+	void mainWindow::saveProfile() {
+		String^ profileText = profileComboBox->Text;
 
+		if (profileText != "") {
+			StreamReader^ sr = gcnew StreamReader(profileFileName);
+			List<String^>^ fileLines = gcnew List<String^>();
+
+			try {
+				String^ line;
+				bool profileFound = false;
+
+				while ((line = sr->ReadLine()) != nullptr) {
+					if (line->StartsWith(profileText)) {
+						profileFound = true;
+						fileLines->Add(profileText);
+						String^ indices = "";
+						for (int i = 0; i < account::accArray->Count; i++) {
+							if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
+								indices += i.ToString() + " ";
+							}
+						}
+						fileLines->Add(indices->Trim());
+						sr->ReadLine();
+					}
+					else {
+						fileLines->Add(line);
+					}
+				}
+
+				if (!profileFound) {
+					fileLines->Add(profileText);
+					String^ indices = "";
+					for (int i = 0; i < account::accArray->Count; i++) {
+						if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
+							indices += i.ToString() + " ";
+						}
+					}
+					fileLines->Add(indices->Trim());
+					fileLines->Add("");
+				}
+			}
+			finally {
+				sr->Close();
+			}
+
+			StreamWriter^ sw = gcnew StreamWriter(profileFileName, false);
+
+			try {
+				for each (String ^ fileLine in fileLines) {
+					sw->WriteLine(fileLine);
+				}
+			}
+			finally {
+				sw->Close();
+			}
+		}
+	}
+
+
+
+	void mainWindow::loadProfile() {
+		if (File::Exists(profileFileName)) {
+			if (accountNames->CheckedItems->Count != 0) {
+				for (int i = 0; i < account::accArray->Count; i++) {
+					accountNames->SetItemCheckState(i, CheckState::Unchecked);
+				}
+			}
+			StreamReader^ sr = gcnew StreamReader(profileFileName);
+			try {
+				String^ line;
+				while ((line = sr->ReadLine()) != nullptr) {
+					if (line->StartsWith(profileComboBox->Text)) {
+						String^ numbersLine = sr->ReadLine();
+						if (numbersLine != nullptr) {
+							array<String^>^ numberStrings =
+								numbersLine->Split(gcnew array<wchar_t>{ ' ' }, StringSplitOptions::RemoveEmptyEntries);
+							for each (String ^ numStr in numberStrings) {
+								int number;
+								if (Int32::TryParse(numStr, number)) {
+									accountNames->SetItemCheckState(number, CheckState::Checked);
+								}
+							}
+						}
+					}
+				}
+			}
+			finally {
+				sr->Close();
+			}
+		}
+	}
 	void mainWindow::saveData() {
 		StreamWriter^ sw = gcnew StreamWriter(pathFileName, false);
 		sw->WriteLine("[Path] = " + Path);													// Сохраняем путь к папке System
@@ -76,7 +166,13 @@ namespace L2autologin {
 				sw->WriteLine("[Account Name] = " + account::accArray[i]->Name);			//
 				sw->WriteLine("[Account Login] = " + account::accArray[i]->Login);			// Сохраняем данные аккаунтов
 				sw->WriteLine("[Account Password] = " + account::accArray[i]->Password);	//
-				sw->WriteLine();															//
+			}
+			sw->WriteLine();
+			sw->WriteLine("[Profile 1]");
+			for (int i = 0; i < account::accArray->Count; i++) {
+				if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
+					sw->Write(i + " ");
+				}
 			}
 		}
 		finally {

@@ -14,6 +14,9 @@ namespace L2autologin {
 		this->label1 = (gcnew System::Windows::Forms::Label());
 		this->DelayBox = (gcnew System::Windows::Forms::TextBox());
 		this->label2 = (gcnew System::Windows::Forms::Label());
+		this->profileComboBox = (gcnew System::Windows::Forms::ComboBox());
+		this->saveProfileButton = (gcnew System::Windows::Forms::Button());
+		this->loadProfileButton = (gcnew System::Windows::Forms::Button());
 		this->SuspendLayout();
 		// 
 		// accountNames
@@ -87,24 +90,59 @@ namespace L2autologin {
 		// 
 		this->DelayBox->Location = System::Drawing::Point(266, 76);
 		this->DelayBox->Name = L"DelayBox";
-		this->DelayBox->Text = "5000";
-		this->DelayBox->Size = System::Drawing::Size(31, 20);
+		this->DelayBox->Size = System::Drawing::Size(52, 20);
 		this->DelayBox->TabIndex = 10;
+		this->DelayBox->Text = L"5000";
 		// 
 		// label2
 		// 
 		this->label2->AutoSize = true;
-		this->label2->Location = System::Drawing::Point(303, 79);
+		this->label2->Location = System::Drawing::Point(324, 79);
 		this->label2->Name = L"label2";
 		this->label2->Size = System::Drawing::Size(22, 13);
 		this->label2->TabIndex = 11;
 		this->label2->Text = L"Мс";
 		// 
+		// profileComboBox
+		// 
+		this->profileComboBox->FormattingEnabled = true;
+		this->profileComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			L"Профиль 1", L"Профиль 2", L"Профиль 3",
+				L"Профиль 4", L"Профиль 5"
+		});
+		this->profileComboBox->Location = System::Drawing::Point(505, 13);
+		this->profileComboBox->Name = L"profileComboBox";
+		this->profileComboBox->Size = System::Drawing::Size(171, 21);
+		this->profileComboBox->TabIndex = 12;
+		// 
+		// saveProfileButton
+		// 
+		this->saveProfileButton->Location = System::Drawing::Point(505, 74);
+		this->saveProfileButton->Name = L"saveProfileButton";
+		this->saveProfileButton->Size = System::Drawing::Size(171, 23);
+		this->saveProfileButton->TabIndex = 13;
+		this->saveProfileButton->Text = L"Сохранить профиль";
+		this->saveProfileButton->UseVisualStyleBackColor = true;
+		this->saveProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::saveProfileButton_Click);
+		// 
+		// loadProfileButton
+		// 
+		this->loadProfileButton->Location = System::Drawing::Point(505, 41);
+		this->loadProfileButton->Name = L"loadProfileButton";
+		this->loadProfileButton->Size = System::Drawing::Size(171, 23);
+		this->loadProfileButton->TabIndex = 14;
+		this->loadProfileButton->Text = L"Загрузить профиль";
+		this->loadProfileButton->UseVisualStyleBackColor = true;
+		this->loadProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::loadProfileButton_Click);
+		// 
 		// mainWindow
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-		this->ClientSize = System::Drawing::Size(483, 169);
+		this->ClientSize = System::Drawing::Size(688, 169);
+		this->Controls->Add(this->loadProfileButton);
+		this->Controls->Add(this->saveProfileButton);
+		this->Controls->Add(this->profileComboBox);
 		this->Controls->Add(this->label2);
 		this->Controls->Add(this->DelayBox);
 		this->Controls->Add(this->label1);
@@ -114,13 +152,14 @@ namespace L2autologin {
 		this->Controls->Add(this->addButton);
 		this->Controls->Add(this->removeButton);
 		this->Controls->Add(this->accountNames);
-		this->MaximumSize = System::Drawing::Size(499, 208);
-		this->MinimumSize = System::Drawing::Size(499, 208);
+		this->MaximumSize = System::Drawing::Size(704, 208);
+		this->MinimumSize = System::Drawing::Size(704, 208);
 		this->Name = L"mainWindow";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 		this->Text = L"L2 АвтоЛогин";
 		this->ResumeLayout(false);
 		this->PerformLayout();
+
 	}
 
 	void addAccountForm::InitializeComponent() {
