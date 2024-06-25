@@ -179,6 +179,7 @@ namespace L2autologin {
 			}
 		}
 	}
+
 	void mainWindow::saveData() {
 		StreamWriter^ sw = gcnew StreamWriter(pathFileName, false);
 		sw->WriteLine("[Path] = " + Path);													// Сохраняем путь к папке System
@@ -189,13 +190,6 @@ namespace L2autologin {
 				sw->WriteLine("[Account Name] = " + account::accArray[i]->Name);			//
 				sw->WriteLine("[Account Login] = " + account::accArray[i]->Login);			// Сохраняем данные аккаунтов
 				sw->WriteLine("[Account Password] = " + account::accArray[i]->Password);	//
-			}
-			sw->WriteLine();
-			sw->WriteLine("[Profile 1]");
-			for (int i = 0; i < account::accArray->Count; i++) {
-				if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
-					sw->Write(i + " ");
-				}
 			}
 		}
 		finally {
