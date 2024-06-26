@@ -167,7 +167,7 @@ namespace L2autologin {
 			for (int i = 0; i < account::accArray->Count; i++) {
 				accountNames->SetItemCheckState(i, CheckState::Unchecked);
 			}
-			}
+		}
 		StreamReader^ sr = gcnew StreamReader(_profileFileName);
 		try {
 			String^ line;
