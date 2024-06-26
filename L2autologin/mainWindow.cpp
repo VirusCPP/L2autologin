@@ -21,18 +21,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::removeAccButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (accountNames->CheckedItems->Count == 0) {
-			return;
-		}
-		if (MessageBox::Show("Удалить выбранные аккаунты?", "Удаление аккаунтов", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-			for (int i = 0; i < account::accArray->Count; i++) {
-				if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
-					accountNames->Items->RemoveAt(i);
-					account::accArray->RemoveAt(i);
-				}
-			}
-			saveData();
-		}
+		removeAccount();
 	}
 
 	void mainWindow::startButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -53,6 +42,21 @@ namespace L2autologin {
 		}
 		else
 			MessageBox::Show("Аккаунт с такими данными уже существует", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+
+	void mainWindow::removeAccount() {
+		if (accountNames->CheckedItems->Count == 0) {
+			return;
+		}
+		if (MessageBox::Show("Удалить выбранные аккаунты?", "Удаление аккаунтов", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+			for (int i = 0; i < account::accArray->Count; i++) {
+				if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
+					accountNames->Items->RemoveAt(i);
+					account::accArray->RemoveAt(i);
+				}
+			}
+			saveData();
+		}
 	}
 
 	void mainWindow::chooseFolder() {
