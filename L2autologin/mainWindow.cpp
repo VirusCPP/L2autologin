@@ -76,15 +76,15 @@ namespace L2autologin {
 	}
 
 	void mainWindow::saveProfile() {
-		if (!File::Exists(profileFileName)) {
-			StreamWriter^ sw = gcnew StreamWriter(profileFileName, true);
+		if (!File::Exists(_profileFileName)) {
+			StreamWriter^ sw = gcnew StreamWriter(_profileFileName, true);
 			sw->Close();
 		}
 		if (accountNames->CheckedItems->Count != 0) {
 			String^ profileText = profileComboBox->Text;
 
 			if (profileText != "") {
-				StreamReader^ sr = gcnew StreamReader(profileFileName);
+				StreamReader^ sr = gcnew StreamReader(_profileFileName);
 				List<String^>^ fileLines = gcnew List<String^>();
 
 				try {
@@ -145,7 +145,7 @@ namespace L2autologin {
 					sr->Close();
 				}
 
-				StreamWriter^ sw = gcnew StreamWriter(profileFileName, false); // Перезаписываем файл
+				StreamWriter^ sw = gcnew StreamWriter(_profileFileName, false); // Перезаписываем файл
 
 				try {
 					for each (String ^ fileLine in fileLines) {
@@ -160,13 +160,13 @@ namespace L2autologin {
 	}
 
 	void mainWindow::loadProfile() {
-		if (File::Exists(profileFileName)) {
+		if (File::Exists(_profileFileName)) {
 			if (accountNames->CheckedItems->Count != 0) {
 				for (int i = 0; i < account::accArray->Count; i++) {
 					accountNames->SetItemCheckState(i, CheckState::Unchecked);
 				}
 			}
-			StreamReader^ sr = gcnew StreamReader(profileFileName);
+			StreamReader^ sr = gcnew StreamReader(_profileFileName);
 			try {
 				String^ line;
 				while ((line = sr->ReadLine()) != nullptr) {
@@ -194,7 +194,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::saveData() {
-		StreamWriter^ sw = gcnew StreamWriter(pathFileName, false);
+		StreamWriter^ sw = gcnew StreamWriter(_dataFileName, false);
 		sw->WriteLine("[Path] = " + Path);													// Сохраняем путь к папке System
 		try {
 			for (int i = 0; i < account::accArray->Count; i++) {
@@ -211,8 +211,8 @@ namespace L2autologin {
 	}
 	
 	void mainWindow::loadData() {
-		if (File::Exists(pathFileName)) {
-			StreamReader^ sr = gcnew StreamReader(pathFileName);
+		if (File::Exists(_dataFileName)) {
+			StreamReader^ sr = gcnew StreamReader(_dataFileName);
 
 			try {
 				String^ line;
@@ -248,7 +248,7 @@ namespace L2autologin {
 
 	void mainWindow::launchApp() {
 		Process^ proc = gcnew Process();
-		Int32::TryParse(DelayBox->Text, delay);
+		Int32::TryParse(DelayBox->Text, _delay);
 		proc->StartInfo->FileName = Path + "\\L2.exe";
 		try {
 			if (accountNames->CheckedItems->Count != 0) {
@@ -259,7 +259,7 @@ namespace L2autologin {
 						String^ parm2 = account::accArray[i]->Password;
 						proc->StartInfo->Arguments = "account=" + parm1 + " " + "password=" + parm2;
 						proc->Start();
-						System::Threading::Thread::Sleep(delay);
+						System::Threading::Thread::Sleep(_delay);
 					}
 				}
 			}

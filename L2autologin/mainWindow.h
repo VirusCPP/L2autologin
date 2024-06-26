@@ -22,8 +22,8 @@ namespace L2autologin {
 			loadData();
 			checkPathStatus();
 		}
-		static int delay;
-		static String^ version = L"0.7";
+		static int _delay;
+		static String^ _version = L"0.7";
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
@@ -45,9 +45,8 @@ namespace L2autologin {
 		static System::Windows::Forms::TextBox^ DelayBox;
 		static System::Windows::Forms::CheckedListBox^ accountNames;
 		static System::Windows::Forms::ComboBox^ profileComboBox;
-		static String^ tempFileName;
-		static String^ pathFileName = "Data.ini";
-		static String^ profileFileName = "Profile.ini";
+		static String^ _dataFileName = "Data.ini";
+		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;
 		System::Windows::Forms::Button^ removeButton;
 		System::Windows::Forms::Button^ addButton;
