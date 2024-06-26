@@ -23,8 +23,8 @@ namespace L2autologin {
 			checkPathStatus();
 		}
 		static int delay;
-		void removebutton_Click(System::Object^ sender, System::EventArgs^ e);
-		void addbutton_Click(System::Object^ sender, System::EventArgs^ e);
+		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
+		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
 		void addPathButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void startButton_Click(System::Object^ sender, System::EventArgs^ e);

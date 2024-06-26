@@ -36,7 +36,7 @@ namespace L2autologin {
 		this->removeButton->TabIndex = 4;
 		this->removeButton->Text = L"Удалить аккаунт";
 		this->removeButton->UseVisualStyleBackColor = true;
-		this->removeButton->Click += gcnew System::EventHandler(this, &mainWindow::removebutton_Click);
+		this->removeButton->Click += gcnew System::EventHandler(this, &mainWindow::removeAccButton_Click);
 		// 
 		// addButton
 		// 
@@ -46,7 +46,7 @@ namespace L2autologin {
 		this->addButton->TabIndex = 5;
 		this->addButton->Text = L"Добавить аккаунт";
 		this->addButton->UseVisualStyleBackColor = true;
-		this->addButton->Click += gcnew System::EventHandler(this, &mainWindow::addbutton_Click);
+		this->addButton->Click += gcnew System::EventHandler(this, &mainWindow::addAccButton_Click);
 		// 
 		// startButton
 		// 

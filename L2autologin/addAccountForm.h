@@ -52,7 +52,7 @@ namespace L2autologin {
 		else
 			MessageBox::Show("Заполнены не все поля", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 }
-private: System::Void cancelButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	void cancelButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	Close();
 }
 };

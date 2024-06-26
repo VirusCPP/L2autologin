@@ -15,12 +15,12 @@ namespace L2autologin {
 		chooseFolder();
 	}
 	
-	void mainWindow::addbutton_Click(System::Object^ sender, System::EventArgs^ e) {
+	void mainWindow::addAccButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		mainWindow^ addWin = dynamic_cast<mainWindow^>(Application::OpenForms[0]);
 		addAccountForm::openAddAccountForm(addWin);
 	}
 
-	void mainWindow::removebutton_Click(System::Object^ sender, System::EventArgs^ e) {
+	void mainWindow::removeAccButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		for (int i = 0; i < account::accArray->Count; i++) {
 			if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
 				accountNames->Items->RemoveAt(i);
