@@ -23,6 +23,7 @@ namespace L2autologin {
 			checkPathStatus();
 		}
 		static int delay;
+		static String^ version = "0.7";
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
