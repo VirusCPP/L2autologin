@@ -160,36 +160,36 @@ namespace L2autologin {
 	}
 
 	void mainWindow::loadProfile() {
-		if (File::Exists(_profileFileName)) {
-			if (accountNames->CheckedItems->Count != 0) {
-				for (int i = 0; i < account::accArray->Count; i++) {
-					accountNames->SetItemCheckState(i, CheckState::Unchecked);
-				}
+		if (!File::Exists(_dataFileName)) {
+			return;
+		}
+		if (accountNames->CheckedItems->Count != 0) {
+			for (int i = 0; i < account::accArray->Count; i++) {
+				accountNames->SetItemCheckState(i, CheckState::Unchecked);
 			}
-			StreamReader^ sr = gcnew StreamReader(_profileFileName);
-			try {
-				String^ line;
-				while ((line = sr->ReadLine()) != nullptr) {
-					if (line->StartsWith(profileComboBox->Text)) {
-						String^ numbersLine = sr->ReadLine();
-						if (numbersLine != nullptr) {
-							array<String^>^ numberStrings =
-								numbersLine->Split(gcnew array<wchar_t>{ ' ' }, StringSplitOptions::RemoveEmptyEntries);
-							for each (String ^ numStr in numberStrings) {
-								int number;
-								if (Int32::TryParse(numStr, number)) {
-									accountNames->SetItemCheckState(number, CheckState::Checked);
-								}
+			}
+		StreamReader^ sr = gcnew StreamReader(_profileFileName);
+		try {
+			String^ line;
+			while ((line = sr->ReadLine()) != nullptr) {
+				if (line->StartsWith(profileComboBox->Text)) {
+					String^ numbersLine = sr->ReadLine();
+					if (numbersLine != nullptr) {
+						array<String^>^ numberStrings =
+							numbersLine->Split(gcnew array<wchar_t>{ ' ' }, StringSplitOptions::RemoveEmptyEntries);
+						for each (String ^ numStr in numberStrings) {
+							int number;
+							if (Int32::TryParse(numStr, number)) {
+								accountNames->SetItemCheckState(number, CheckState::Checked);
 							}
 						}
-						DelayBox->Text = sr->ReadLine();
 					}
+					DelayBox->Text = sr->ReadLine();
 				}
 			}
-			finally {
-				sr->Close();
-				
-			}
+		}
+		finally {
+			sr->Close();
 		}
 	}
 
@@ -211,39 +211,38 @@ namespace L2autologin {
 	}
 	
 	void mainWindow::loadData() {
-		if (File::Exists(_dataFileName)) {
-			StreamReader^ sr = gcnew StreamReader(_dataFileName);
+		if (!File::Exists(_dataFileName)) {
+			return;
+		}
+		StreamReader^ sr = gcnew StreamReader(_dataFileName);
 
-			try {
-				String^ line;
-				while ((line = sr->ReadLine()) != nullptr) {								//
-					if (line->StartsWith("[Path] = ")) {									//
-						String^ path = line->Substring(9);									// —читываем путь к папке System
-						Path = path;														//
-						PathBox->Text = Path;												//
-					}
-
-					// —читываем данные аккаунтов
-					else if (line->StartsWith("[Account Name] = ")) {						
-						String^ name = line->Substring(17);									
-						String^ login = sr->ReadLine();										
-						login = login->Substring(18);									
-						String^ password = sr->ReadLine();
-						password = password->Substring(21); 
-						
-						sr->ReadLine();
-
-						account^ newAccount = gcnew account(name, login, password);
-						account::accArray->Add(newAccount);
-						mainWindow::accountNames->Items->Add({ name });
-					}
+		try {
+			String^ line;
+			while ((line = sr->ReadLine()) != nullptr) {								//
+				if (line->StartsWith("[Path] = ")) {									//
+					String^ path = line->Substring(9);									// —читываем путь к папке System
+					Path = path;														//
+					PathBox->Text = Path;												//
+				}
+				// —читываем данные аккаунтов
+				else if (line->StartsWith("[Account Name] = ")) {						
+					String^ name = line->Substring(17);									
+					String^ login = sr->ReadLine();										
+					login = login->Substring(18);									
+					String^ password = sr->ReadLine();
+					password = password->Substring(21); 
+					
+					sr->ReadLine();
+					
+					account^ newAccount = gcnew account(name, login, password);
+					account::accArray->Add(newAccount);
+					mainWindow::accountNames->Items->Add({ name });
 				}
 			}
-			finally {
-				sr->Close();
-			}
 		}
-
+		finally {
+			sr->Close();
+		}
 	}
 
 	void mainWindow::launchApp() {
