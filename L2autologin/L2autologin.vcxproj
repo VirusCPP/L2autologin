@@ -131,6 +131,7 @@
     <ClCompile Include="buttonMethods.cpp" />
     <ClCompile Include="components.cpp" />
     <ClCompile Include="encryptMethods.cpp" />
+    <ClCompile Include="fileMethods.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainWindow.cpp" />
   </ItemGroup>
