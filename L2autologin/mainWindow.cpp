@@ -25,7 +25,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::startButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		launchApp();
+		ThreadPool::QueueUserWorkItem(gcnew WaitCallback(&launchApp), nullptr);
 	}
 
 	void addAccountForm::openAddAccountForm(mainWindow^ mainWin) {
@@ -254,7 +254,7 @@ namespace L2autologin {
 		}
 	}
 
-	void mainWindow::launchApp() {
+	void mainWindow::launchApp(Object^ state) {
 		Process^ proc = gcnew Process();
 		Int32::TryParse(DelayBox->Text, _delay);
 		proc->StartInfo->FileName = Path + "\\L2.exe";

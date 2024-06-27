@@ -11,6 +11,8 @@ namespace L2autologin {
 	using namespace System::Drawing;
 	using namespace System::Collections::Generic;
 	using namespace System::Diagnostics;
+	using namespace System::Threading;
+
 	
 	public ref class mainWindow : public System::Windows::Forms::Form
 	{
@@ -31,7 +33,7 @@ namespace L2autologin {
 		void addPathButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void startButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static bool isAccountUnique(String^ name, String^ login);
-		static void launchApp();
+		static void launchApp(Object^ state);
 		static void saveData();
 		static void loadData();
 		static void checkPathStatus();
