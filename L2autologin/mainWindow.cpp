@@ -49,7 +49,7 @@ namespace L2autologin {
 			return;
 		}
 		if (MessageBox::Show("Удалить выбранные аккаунты?", "Удаление аккаунтов", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-			for (int i = 0; i < account::accArray->Count; i++) {
+			for (int i = account::accArray->Count - 1; i >= 0 ; i--) {
 				if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
 					accountNames->Items->RemoveAt(i);
 					account::accArray->RemoveAt(i);
@@ -202,17 +202,49 @@ namespace L2autologin {
 		}
 	}
 
+	String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv) {
+		Aes^ aes = Aes::Create();
+		aes->Key = key;
+		aes->IV = iv;
+
+		MemoryStream^ memoryStream = gcnew MemoryStream();
+		CryptoStream^ cryptoStream = gcnew CryptoStream(memoryStream, aes->CreateEncryptor(), CryptoStreamMode::Write);
+
+		StreamWriter^ writer = gcnew StreamWriter(cryptoStream);
+		writer->Write(plainText);
+		writer->Flush();
+		cryptoStream->FlushFinalBlock();
+
+		array<Byte>^ encrypted = memoryStream->ToArray();
+		return Convert::ToBase64String(encrypted);
+	}
+
+	String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv) {
+		array<Byte>^ buffer = Convert::FromBase64String(encryptedText);
+
+		Aes^ aes = Aes::Create();
+		aes->Key = key;
+		aes->IV = iv;
+
+		MemoryStream^ memoryStream = gcnew MemoryStream(buffer);
+		CryptoStream^ cryptoStream = gcnew CryptoStream(memoryStream, aes->CreateDecryptor(), CryptoStreamMode::Read);
+
+		StreamReader^ reader = gcnew StreamReader(cryptoStream);
+		return reader->ReadToEnd();
+	}
+
 	void mainWindow::saveData() {
+		array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
+		array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
+
 		StreamWriter^ sw = gcnew StreamWriter(_dataFileName, false);
-		// Сохраняем путь к папке System
-		sw->WriteLine("[Path] = " + Path);													
+		sw->WriteLine(EncryptData("[Path] = " + Path, key, iv));
 		try {
 			for (int i = 0; i < account::accArray->Count; i++) {
-				// Сохраняем данные аккаунтов
-				sw->WriteLine();															
-				sw->WriteLine("[Account Name] = " + account::accArray[i]->Name);			
-				sw->WriteLine("[Account Login] = " + account::accArray[i]->Login);			
-				sw->WriteLine("[Account Password] = " + account::accArray[i]->Password);	
+				sw->WriteLine();
+				sw->WriteLine(EncryptData("[Account Name] = " + account::accArray[i]->Name, key, iv));
+				sw->WriteLine(EncryptData("[Account Login] = " + account::accArray[i]->Login, key, iv));
+				sw->WriteLine(EncryptData("[Account Password] = " + account::accArray[i]->Password, key, iv));
 			}
 		}
 		finally {
@@ -224,30 +256,39 @@ namespace L2autologin {
 		if (!File::Exists(_dataFileName)) {
 			return;
 		}
+
+		array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Используйте тот же ключ
+		array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Используйте тот же IV
+
 		StreamReader^ sr = gcnew StreamReader(_dataFileName);
 
 		try {
 			String^ line;
-			// Считываем путь к папке System
-			while ((line = sr->ReadLine()) != nullptr) {							
-				if (line->StartsWith("[Path] = ")) {								
-					String^ path = line->Substring(9);								
-					Path = path;													
-					PathBox->Text = Path;											
-				}
-				// Считываем данные аккаунтов
-				else if (line->StartsWith("[Account Name] = ")) {						
-					String^ name = line->Substring(17);									
-					String^ login = sr->ReadLine();										
-					login = login->Substring(18);									
-					String^ password = sr->ReadLine();
-					password = password->Substring(21); 
-					
-					sr->ReadLine();
-					
-					account^ newAccount = gcnew account(name, login, password);
-					account::accArray->Add(newAccount);
-					mainWindow::accountNames->Items->Add({ name });
+			while ((line = sr->ReadLine()) != nullptr) {
+				if (!String::IsNullOrEmpty(line)) {
+					String^ decryptedLine = DecryptData(line, key, iv);
+
+					if (decryptedLine->StartsWith("[Path] = ")) {
+						String^ path = decryptedLine->Substring(9); // Извлекаем путь, пропуская "[Path] = "
+						Path = path;
+						PathBox->Text = Path;
+					}
+					else if (decryptedLine->StartsWith("[Account Name] = ")) {
+						String^ name = decryptedLine->Substring(17); // Извлекаем имя аккаунта
+						String^ encryptedLogin = sr->ReadLine();
+						String^ decryptedLogin = DecryptData(encryptedLogin, key, iv);
+						String^ login = decryptedLogin->Substring(18); // Извлекаем логин, пропуская "[Account Login] = "
+
+						String^ encryptedPassword = sr->ReadLine();
+						String^ decryptedPassword = DecryptData(encryptedPassword, key, iv);
+						String^ password = decryptedPassword->Substring(21); // Извлекаем пароль, пропуская "[Account Password] = "
+
+						sr->ReadLine(); // Пропускаем пустую строку, разделяющую записи аккаунтов
+
+						account^ newAccount = gcnew account(name, login, password);
+						account::accArray->Add(newAccount);
+						mainWindow::accountNames->Items->Add({ name });
+					}
 				}
 			}
 		}
@@ -255,6 +296,7 @@ namespace L2autologin {
 			sr->Close();
 		}
 	}
+
 
 	void mainWindow::launchApp(Object^ state) {
 		Process^ proc = gcnew Process();

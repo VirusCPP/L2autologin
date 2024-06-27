@@ -4,6 +4,7 @@ namespace L2autologin {
 
 	using namespace System;
 	using namespace System::IO;
+	using namespace System::Text;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
@@ -12,6 +13,7 @@ namespace L2autologin {
 	using namespace System::Collections::Generic;
 	using namespace System::Diagnostics;
 	using namespace System::Threading;
+	using namespace System::Security::Cryptography;
 
 	
 	public ref class mainWindow : public System::Windows::Forms::Form
@@ -48,7 +50,7 @@ namespace L2autologin {
 		static System::Windows::Forms::TextBox^ DelayBox;
 		static System::Windows::Forms::CheckedListBox^ accountNames;
 		static System::Windows::Forms::ComboBox^ profileComboBox;
-		static String^ _dataFileName = "Data.ini";
+		static String^ _dataFileName = "Data.bin";
 		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;
 		System::Windows::Forms::Button^ removeButton;
