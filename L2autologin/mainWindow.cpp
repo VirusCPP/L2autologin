@@ -146,15 +146,15 @@ namespace L2autologin {
 
 						// Добавляем значение из DelayBox
 						fileLines->Add(DelayBox->Text);
-
-						fileLines->Add(""); // Добавляем пустую строку для перехода на новую строку
+						// Добавляем пустую строку для перехода на новую строку
+						fileLines->Add(""); 
 					}
 				}
 				finally {
 					sr->Close();
 				}
-
-				StreamWriter^ sw = gcnew StreamWriter(_profileFileName, false); // Перезаписываем файл
+				// Перезаписываем файл
+				StreamWriter^ sw = gcnew StreamWriter(_profileFileName, false); 
 
 				try {
 					for each (String ^ fileLine in fileLines) {
@@ -204,14 +204,15 @@ namespace L2autologin {
 
 	void mainWindow::saveData() {
 		StreamWriter^ sw = gcnew StreamWriter(_dataFileName, false);
-		sw->WriteLine("[Path] = " + Path);													// Сохраняем путь к папке System
+		// Сохраняем путь к папке System
+		sw->WriteLine("[Path] = " + Path);													
 		try {
 			for (int i = 0; i < account::accArray->Count; i++) {
-				
-				sw->WriteLine();															//
-				sw->WriteLine("[Account Name] = " + account::accArray[i]->Name);			//
-				sw->WriteLine("[Account Login] = " + account::accArray[i]->Login);			// Сохраняем данные аккаунтов
-				sw->WriteLine("[Account Password] = " + account::accArray[i]->Password);	//
+				// Сохраняем данные аккаунтов
+				sw->WriteLine();															
+				sw->WriteLine("[Account Name] = " + account::accArray[i]->Name);			
+				sw->WriteLine("[Account Login] = " + account::accArray[i]->Login);			
+				sw->WriteLine("[Account Password] = " + account::accArray[i]->Password);	
 			}
 		}
 		finally {
@@ -227,11 +228,12 @@ namespace L2autologin {
 
 		try {
 			String^ line;
-			while ((line = sr->ReadLine()) != nullptr) {								//
-				if (line->StartsWith("[Path] = ")) {									//
-					String^ path = line->Substring(9);									// Считываем путь к папке System
-					Path = path;														//
-					PathBox->Text = Path;												//
+			// Считываем путь к папке System
+			while ((line = sr->ReadLine()) != nullptr) {							
+				if (line->StartsWith("[Path] = ")) {								
+					String^ path = line->Substring(9);								
+					Path = path;													
+					PathBox->Text = Path;											
 				}
 				// Считываем данные аккаунтов
 				else if (line->StartsWith("[Account Name] = ")) {						
