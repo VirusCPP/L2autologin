@@ -28,8 +28,6 @@ namespace L2autologin {
 		}
 		static int _delay;
 		static String^ _version = L"0.8";
-		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
-		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
@@ -71,6 +69,8 @@ namespace L2autologin {
 		}
 
 	private: 
+		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
+		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
 		System::Windows::Forms::Label^ label1;
 		System::Windows::Forms::Label^ label2;
 		System::Windows::Forms::Button^ saveProfileButton;
