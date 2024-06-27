@@ -28,6 +28,8 @@ namespace L2autologin {
 		}
 		static int _delay;
 		static String^ _version = L"0.8";
+		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
+		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
@@ -44,6 +46,8 @@ namespace L2autologin {
 		static void saveProfile();
 		static void loadProfile();
 		void textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e);
+		static String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv);
+		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
 		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
 		static System::Windows::Forms::Button^ startButton;
 		static System::Windows::Forms::TextBox^ PathBox;

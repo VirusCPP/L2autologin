@@ -202,7 +202,7 @@ namespace L2autologin {
 		}
 	}
 
-	String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv) {
+	String^ mainWindow::EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv) {
 		Aes^ aes = Aes::Create();
 		aes->Key = key;
 		aes->IV = iv;
@@ -219,7 +219,7 @@ namespace L2autologin {
 		return Convert::ToBase64String(encrypted);
 	}
 
-	String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv) {
+	String^ mainWindow::DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv) {
 		array<Byte>^ buffer = Convert::FromBase64String(encryptedText);
 
 		Aes^ aes = Aes::Create();
@@ -234,9 +234,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::saveData() {
-		array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
-		array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
-
+		
 		StreamWriter^ sw = gcnew StreamWriter(_dataFileName, false);
 		sw->WriteLine(EncryptData("[Path] = " + Path, key, iv));
 		try {
@@ -256,9 +254,6 @@ namespace L2autologin {
 		if (!File::Exists(_dataFileName)) {
 			return;
 		}
-
-		array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Используйте тот же ключ
-		array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Используйте тот же IV
 
 		StreamReader^ sr = gcnew StreamReader(_dataFileName);
 
