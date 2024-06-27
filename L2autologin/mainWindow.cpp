@@ -11,23 +11,6 @@ namespace L2autologin {
 		}
 	}
 
-	void mainWindow::addPathButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		chooseFolder();
-	}
-	
-	void mainWindow::addAccButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		mainWindow^ addWin = dynamic_cast<mainWindow^>(Application::OpenForms[0]);
-		addAccountForm::openAddAccountForm(addWin);
-	}
-
-	void mainWindow::removeAccButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		removeAccount();
-	}
-
-	void mainWindow::startButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		ThreadPool::QueueUserWorkItem(gcnew WaitCallback(&launchApp), nullptr);
-	}
-
 	void addAccountForm::openAddAccountForm(mainWindow^ mainWin) {
 		addAccountForm^ AddAccountForm = gcnew addAccountForm();
 		AddAccountForm->ShowDialog();
@@ -200,37 +183,6 @@ namespace L2autologin {
 		finally {
 			sr->Close();
 		}
-	}
-
-	String^ mainWindow::EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv) {
-		Aes^ aes = Aes::Create();
-		aes->Key = key;
-		aes->IV = iv;
-
-		MemoryStream^ memoryStream = gcnew MemoryStream();
-		CryptoStream^ cryptoStream = gcnew CryptoStream(memoryStream, aes->CreateEncryptor(), CryptoStreamMode::Write);
-
-		StreamWriter^ writer = gcnew StreamWriter(cryptoStream);
-		writer->Write(plainText);
-		writer->Flush();
-		cryptoStream->FlushFinalBlock();
-
-		array<Byte>^ encrypted = memoryStream->ToArray();
-		return Convert::ToBase64String(encrypted);
-	}
-
-	String^ mainWindow::DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv) {
-		array<Byte>^ buffer = Convert::FromBase64String(encryptedText);
-
-		Aes^ aes = Aes::Create();
-		aes->Key = key;
-		aes->IV = iv;
-
-		MemoryStream^ memoryStream = gcnew MemoryStream(buffer);
-		CryptoStream^ cryptoStream = gcnew CryptoStream(memoryStream, aes->CreateDecryptor(), CryptoStreamMode::Read);
-
-		StreamReader^ reader = gcnew StreamReader(cryptoStream);
-		return reader->ReadToEnd();
 	}
 
 	void mainWindow::saveData() {
