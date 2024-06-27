@@ -4,6 +4,7 @@
 namespace L2autologin {
 
 	void mainWindow::InitializeComponent() {
+		System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(mainWindow::typeid));
 		this->accountNames = (gcnew System::Windows::Forms::CheckedListBox());
 		this->removeButton = (gcnew System::Windows::Forms::Button());
 		this->addButton = (gcnew System::Windows::Forms::Button());
@@ -154,11 +155,13 @@ namespace L2autologin {
 		this->Controls->Add(this->addButton);
 		this->Controls->Add(this->removeButton);
 		this->Controls->Add(this->accountNames);
+		this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+		this->ImeMode = System::Windows::Forms::ImeMode::On;
 		this->MaximumSize = System::Drawing::Size(678, 208);
 		this->MinimumSize = System::Drawing::Size(678, 208);
 		this->Name = L"mainWindow";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-		this->Text = L"L2 јвтоЋогин by VirusCPP / version: " + _version;
+		this->Text = L"L2 AutoLogin by VirusCPP";
 		this->ResumeLayout(false);
 		this->PerformLayout();
 
