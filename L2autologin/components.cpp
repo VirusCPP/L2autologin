@@ -241,6 +241,8 @@ namespace L2autologin {
 		this->nameTextBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 			static_cast<System::Int32>(static_cast<System::Byte>(64)));
 		this->nameTextBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+		this->nameTextBox->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->nameTextBox->ImeMode = System::Windows::Forms::ImeMode::On;
 		this->nameTextBox->Location = System::Drawing::Point(13, 30);
 		this->nameTextBox->Name = L"nameTextBox";
 		this->nameTextBox->Size = System::Drawing::Size(100, 20);
@@ -251,6 +253,8 @@ namespace L2autologin {
 		this->loginTextBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 			static_cast<System::Int32>(static_cast<System::Byte>(64)));
 		this->loginTextBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+		this->loginTextBox->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->loginTextBox->ImeMode = System::Windows::Forms::ImeMode::On;
 		this->loginTextBox->Location = System::Drawing::Point(119, 30);
 		this->loginTextBox->Name = L"loginTextBox";
 		this->loginTextBox->Size = System::Drawing::Size(100, 20);
@@ -261,6 +265,8 @@ namespace L2autologin {
 		this->passwordTextBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 			static_cast<System::Int32>(static_cast<System::Byte>(64)));
 		this->passwordTextBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+		this->passwordTextBox->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->passwordTextBox->ImeMode = System::Windows::Forms::ImeMode::On;
 		this->passwordTextBox->Location = System::Drawing::Point(225, 30);
 		this->passwordTextBox->Name = L"passwordTextBox";
 		this->passwordTextBox->Size = System::Drawing::Size(100, 20);
@@ -316,8 +322,8 @@ namespace L2autologin {
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(31)),
-			static_cast<System::Int32>(static_cast<System::Byte>(31)));
+		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(32)), static_cast<System::Int32>(static_cast<System::Byte>(32)),
+			static_cast<System::Int32>(static_cast<System::Byte>(32)));
 		this->ClientSize = System::Drawing::Size(339, 116);
 		this->Controls->Add(this->cancelButton);
 		this->Controls->Add(this->okButton);
