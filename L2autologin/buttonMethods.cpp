@@ -19,9 +19,11 @@ namespace L2autologin {
 	void mainWindow::startButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		ThreadPool::QueueUserWorkItem(gcnew WaitCallback(&launchApp), nullptr);
 	}
+
 	void mainWindow::loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		loadProfile();
 	}
+
 	void mainWindow::saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (isProfileUnique(profileComboBox->Text)) {
 			mainWindow::profileComboBox->Items->Add({ profileComboBox->Text });
@@ -29,6 +31,7 @@ namespace L2autologin {
 		saveProfile();
 		saveData();
 	}
+
 	void mainWindow::removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		removeProfile();
 	}

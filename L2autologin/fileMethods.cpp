@@ -193,5 +193,4 @@ namespace L2autologin {
 			sr->Close();
 		}
 	}
-
 }

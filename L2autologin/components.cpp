@@ -355,5 +355,4 @@ namespace L2autologin {
 		this->PerformLayout();
 
 	}
-
 }
