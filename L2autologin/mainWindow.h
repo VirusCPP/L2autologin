@@ -32,7 +32,7 @@ namespace L2autologin {
 
 	public:
 	
-		   static String^ _version = L"0.8";
+		   static String^ _version = L"0.9";
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
