@@ -1,1 +1,2 @@
-![Screenshot_523](https://github.com/VirusCPP/L2autologin/assets/164004355/9993f160-da6a-4d14-9a7f-1a4467d8573e)
+
+![Screenshot_13](https://github.com/VirusCPP/L2autologin/assets/164004355/d629cbbe-4dc8-4248-8abf-6a3335d36839)
