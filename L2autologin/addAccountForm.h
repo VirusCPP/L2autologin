@@ -28,7 +28,7 @@ namespace L2autologin {
 		System::Windows::Forms::Label^ passwordLable;
 		System::Windows::Forms::Button^ okButton;
 		System::Windows::Forms::Button^ cancelButton;
-
+		System::ComponentModel::Container^ components;
 	protected:
 		~addAccountForm()
 		{
@@ -38,7 +38,7 @@ namespace L2autologin {
 			}
 		}
 
-	private:System::ComponentModel::Container ^components;
+	private:
 
 #pragma region Windows Form Designer generated code
 		   

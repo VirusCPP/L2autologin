@@ -84,7 +84,7 @@ namespace L2autologin {
 			static_cast<System::Int32>(static_cast<System::Byte>(64)));
 		this->PathBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 		this->PathBox->Enabled = false;
-		this->PathBox->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->PathBox->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 		this->PathBox->Location = System::Drawing::Point(204, 12);
 		this->PathBox->Name = L"PathBox";
 		this->PathBox->Size = System::Drawing::Size(258, 20);
@@ -189,8 +189,8 @@ namespace L2autologin {
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(32)), static_cast<System::Int32>(static_cast<System::Byte>(32)),
-			static_cast<System::Int32>(static_cast<System::Byte>(32)));
+		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(31)),
+			static_cast<System::Int32>(static_cast<System::Byte>(31)));
 		this->ClientSize = System::Drawing::Size(662, 169);
 		this->Controls->Add(this->loadProfileButton);
 		this->Controls->Add(this->saveProfileButton);
@@ -204,7 +204,6 @@ namespace L2autologin {
 		this->Controls->Add(this->addButton);
 		this->Controls->Add(this->removeButton);
 		this->Controls->Add(this->accountNames);
-		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 		this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 		this->ImeMode = System::Windows::Forms::ImeMode::On;
 		this->MaximumSize = System::Drawing::Size(678, 208);
@@ -239,6 +238,9 @@ namespace L2autologin {
 		// 
 		// nameTextBox
 		// 
+		this->nameTextBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->nameTextBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 		this->nameTextBox->Location = System::Drawing::Point(13, 30);
 		this->nameTextBox->Name = L"nameTextBox";
 		this->nameTextBox->Size = System::Drawing::Size(100, 20);
@@ -246,6 +248,9 @@ namespace L2autologin {
 		// 
 		// loginTextBox
 		// 
+		this->loginTextBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->loginTextBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 		this->loginTextBox->Location = System::Drawing::Point(119, 30);
 		this->loginTextBox->Name = L"loginTextBox";
 		this->loginTextBox->Size = System::Drawing::Size(100, 20);
@@ -253,6 +258,9 @@ namespace L2autologin {
 		// 
 		// passwordTextBox
 		// 
+		this->passwordTextBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->passwordTextBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 		this->passwordTextBox->Location = System::Drawing::Point(225, 30);
 		this->passwordTextBox->Name = L"passwordTextBox";
 		this->passwordTextBox->Size = System::Drawing::Size(100, 20);
@@ -278,28 +286,38 @@ namespace L2autologin {
 		// 
 		// okButton
 		// 
+		this->okButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->okButton->FlatAppearance->BorderSize = 0;
+		this->okButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->okButton->Location = System::Drawing::Point(13, 81);
 		this->okButton->Name = L"okButton";
 		this->okButton->Size = System::Drawing::Size(145, 23);
 		this->okButton->TabIndex = 4;
 		this->okButton->Text = L"OK";
-		this->okButton->UseVisualStyleBackColor = true;
+		this->okButton->UseVisualStyleBackColor = false;
 		this->okButton->Click += gcnew System::EventHandler(this, &addAccountForm::okButton_Click);
 		// 
 		// cancelButton
 		// 
+		this->cancelButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->cancelButton->FlatAppearance->BorderSize = 0;
+		this->cancelButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->cancelButton->Location = System::Drawing::Point(180, 81);
 		this->cancelButton->Name = L"cancelButton";
 		this->cancelButton->Size = System::Drawing::Size(145, 23);
 		this->cancelButton->TabIndex = 5;
 		this->cancelButton->Text = L"Cancel";
-		this->cancelButton->UseVisualStyleBackColor = true;
+		this->cancelButton->UseVisualStyleBackColor = false;
 		this->cancelButton->Click += gcnew System::EventHandler(this, &addAccountForm::cancelButton_Click);
 		// 
 		// addAccountForm
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(31)),
+			static_cast<System::Int32>(static_cast<System::Byte>(31)));
 		this->ClientSize = System::Drawing::Size(339, 116);
 		this->Controls->Add(this->cancelButton);
 		this->Controls->Add(this->okButton);
@@ -309,6 +327,7 @@ namespace L2autologin {
 		this->Controls->Add(this->passwordLable);
 		this->Controls->Add(this->loginLable);
 		this->Controls->Add(this->nameLable);
+		this->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 		this->MaximumSize = System::Drawing::Size(355, 155);
 		this->MinimumSize = System::Drawing::Size(355, 155);
 		this->Name = L"addAccountForm";
