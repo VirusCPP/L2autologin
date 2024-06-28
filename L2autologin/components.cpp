@@ -22,66 +22,94 @@ namespace L2autologin {
 		// 
 		// accountNames
 		// 
+		this->accountNames->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->accountNames->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+		this->accountNames->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 		this->accountNames->FormattingEnabled = true;
 		this->accountNames->HorizontalScrollbar = true;
-		this->accountNames->Location = System::Drawing::Point(13, 13);
+		this->accountNames->Location = System::Drawing::Point(12, 12);
 		this->accountNames->Name = L"accountNames";
-		this->accountNames->Size = System::Drawing::Size(176, 139);
+		this->accountNames->Size = System::Drawing::Size(176, 137);
 		this->accountNames->TabIndex = 3;
 		// 
 		// removeButton
 		// 
-		this->removeButton->Location = System::Drawing::Point(205, 131);
+		this->removeButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->removeButton->FlatAppearance->BorderSize = 0;
+		this->removeButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->removeButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->removeButton->Location = System::Drawing::Point(204, 130);
 		this->removeButton->Name = L"removeButton";
 		this->removeButton->Size = System::Drawing::Size(116, 23);
 		this->removeButton->TabIndex = 4;
 		this->removeButton->Text = L"Удалить аккаунт";
-		this->removeButton->UseVisualStyleBackColor = true;
+		this->removeButton->UseVisualStyleBackColor = false;
 		this->removeButton->Click += gcnew System::EventHandler(this, &mainWindow::removeAccButton_Click);
 		// 
 		// addButton
 		// 
-		this->addButton->Location = System::Drawing::Point(205, 102);
+		this->addButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->addButton->FlatAppearance->BorderSize = 0;
+		this->addButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->addButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->addButton->Location = System::Drawing::Point(204, 101);
 		this->addButton->Name = L"addButton";
 		this->addButton->Size = System::Drawing::Size(116, 23);
 		this->addButton->TabIndex = 5;
 		this->addButton->Text = L"Добавить аккаунт";
-		this->addButton->UseVisualStyleBackColor = true;
+		this->addButton->UseVisualStyleBackColor = false;
 		this->addButton->Click += gcnew System::EventHandler(this, &mainWindow::addAccButton_Click);
 		// 
 		// startButton
 		// 
+		this->startButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->startButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->startButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 		this->startButton->ImageKey = L"(отсутствует)";
-		this->startButton->Location = System::Drawing::Point(327, 102);
+		this->startButton->Location = System::Drawing::Point(326, 101);
 		this->startButton->Name = L"startButton";
 		this->startButton->Size = System::Drawing::Size(136, 52);
 		this->startButton->TabIndex = 6;
 		this->startButton->Text = L"СТАРТ";
-		this->startButton->UseVisualStyleBackColor = true;
+		this->startButton->UseVisualStyleBackColor = false;
 		this->startButton->Click += gcnew System::EventHandler(this, &mainWindow::startButton_Click);
 		// 
 		// PathBox
 		// 
+		this->PathBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->PathBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 		this->PathBox->Enabled = false;
-		this->PathBox->Location = System::Drawing::Point(205, 13);
+		this->PathBox->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->PathBox->Location = System::Drawing::Point(204, 12);
 		this->PathBox->Name = L"PathBox";
 		this->PathBox->Size = System::Drawing::Size(258, 20);
 		this->PathBox->TabIndex = 7;
 		// 
 		// addPathButton
 		// 
-		this->addPathButton->Location = System::Drawing::Point(205, 41);
+		this->addPathButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->addPathButton->FlatAppearance->BorderSize = 0;
+		this->addPathButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->addPathButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->addPathButton->Location = System::Drawing::Point(204, 40);
 		this->addPathButton->Name = L"addPathButton";
 		this->addPathButton->Size = System::Drawing::Size(258, 23);
 		this->addPathButton->TabIndex = 8;
 		this->addPathButton->Text = L"Выбрать папку System";
-		this->addPathButton->UseVisualStyleBackColor = true;
+		this->addPathButton->UseVisualStyleBackColor = false;
 		this->addPathButton->Click += gcnew System::EventHandler(this, &mainWindow::addPathButton_Click);
 		// 
 		// label1
 		// 
 		this->label1->AutoSize = true;
-		this->label1->Location = System::Drawing::Point(202, 79);
+		this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->label1->Location = System::Drawing::Point(201, 78);
 		this->label1->Name = L"label1";
 		this->label1->Size = System::Drawing::Size(173, 13);
 		this->label1->TabIndex = 9;
@@ -89,7 +117,11 @@ namespace L2autologin {
 		// 
 		// DelayBox
 		// 
-		this->DelayBox->Location = System::Drawing::Point(383, 76);
+		this->DelayBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->DelayBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+		this->DelayBox->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->DelayBox->Location = System::Drawing::Point(382, 75);
 		this->DelayBox->Name = L"DelayBox";
 		this->DelayBox->Size = System::Drawing::Size(52, 20);
 		this->DelayBox->TabIndex = 10;
@@ -99,7 +131,8 @@ namespace L2autologin {
 		// label2
 		// 
 		this->label2->AutoSize = true;
-		this->label2->Location = System::Drawing::Point(441, 79);
+		this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->label2->Location = System::Drawing::Point(440, 78);
 		this->label2->Name = L"label2";
 		this->label2->Size = System::Drawing::Size(22, 13);
 		this->label2->TabIndex = 11;
@@ -107,41 +140,57 @@ namespace L2autologin {
 		// 
 		// profileComboBox
 		// 
+		this->profileComboBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
 		this->profileComboBox->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+		this->profileComboBox->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->profileComboBox->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 		this->profileComboBox->FormattingEnabled = true;
 		this->profileComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
 			L"[Profile 1]", L"[Profile 2]", L"[Profile 3]",
 				L"[Profile 4]", L"[Profile 5]"
 		});
-		this->profileComboBox->Location = System::Drawing::Point(483, 14);
+		this->profileComboBox->Location = System::Drawing::Point(482, 13);
 		this->profileComboBox->Name = L"profileComboBox";
 		this->profileComboBox->Size = System::Drawing::Size(171, 21);
 		this->profileComboBox->TabIndex = 12;
 		// 
 		// saveProfileButton
 		// 
-		this->saveProfileButton->Location = System::Drawing::Point(483, 74);
+		this->saveProfileButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->saveProfileButton->FlatAppearance->BorderSize = 0;
+		this->saveProfileButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->saveProfileButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->saveProfileButton->Location = System::Drawing::Point(482, 73);
 		this->saveProfileButton->Name = L"saveProfileButton";
 		this->saveProfileButton->Size = System::Drawing::Size(171, 23);
 		this->saveProfileButton->TabIndex = 13;
 		this->saveProfileButton->Text = L"Сохранить профиль";
-		this->saveProfileButton->UseVisualStyleBackColor = true;
+		this->saveProfileButton->UseVisualStyleBackColor = false;
 		this->saveProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::saveProfileButton_Click);
 		// 
 		// loadProfileButton
 		// 
-		this->loadProfileButton->Location = System::Drawing::Point(483, 41);
+		this->loadProfileButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->loadProfileButton->FlatAppearance->BorderSize = 0;
+		this->loadProfileButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->loadProfileButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->loadProfileButton->Location = System::Drawing::Point(482, 40);
 		this->loadProfileButton->Name = L"loadProfileButton";
 		this->loadProfileButton->Size = System::Drawing::Size(171, 23);
 		this->loadProfileButton->TabIndex = 14;
 		this->loadProfileButton->Text = L"Загрузить профиль";
-		this->loadProfileButton->UseVisualStyleBackColor = true;
+		this->loadProfileButton->UseVisualStyleBackColor = false;
 		this->loadProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::loadProfileButton_Click);
 		// 
 		// mainWindow
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(32)), static_cast<System::Int32>(static_cast<System::Byte>(32)),
+			static_cast<System::Int32>(static_cast<System::Byte>(32)));
 		this->ClientSize = System::Drawing::Size(662, 169);
 		this->Controls->Add(this->loadProfileButton);
 		this->Controls->Add(this->saveProfileButton);
@@ -155,6 +204,7 @@ namespace L2autologin {
 		this->Controls->Add(this->addButton);
 		this->Controls->Add(this->removeButton);
 		this->Controls->Add(this->accountNames);
+		this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 		this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 		this->ImeMode = System::Windows::Forms::ImeMode::On;
 		this->MaximumSize = System::Drawing::Size(678, 208);

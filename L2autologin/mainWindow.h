@@ -27,7 +27,10 @@ namespace L2autologin {
 			checkPathStatus();
 		}
 		static int _delay;
-		static String^ _version = L"0.8";
+
+	public:
+	
+		   static String^ _version = L"0.8";
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
@@ -35,6 +38,8 @@ namespace L2autologin {
 		void addPathButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void startButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static bool isAccountUnique(String^ name, String^ login);
+		void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
+		void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void launchApp(Object^ state);
 		static void saveData();
 		static void loadData();
@@ -69,6 +74,7 @@ namespace L2autologin {
 		}
 
 	private: 
+
 		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
 		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
 		System::Windows::Forms::Label^ label1;
@@ -76,16 +82,5 @@ namespace L2autologin {
 		System::Windows::Forms::Button^ saveProfileButton;
 		System::Windows::Forms::Button^ loadProfileButton;
 		System::Windows::Forms::Button^ addPathButton;
-
-#pragma region Windows Form Designer generated code
-	
-#pragma endregion
-	
-	private: System::Void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		loadProfile();
-	}
-	private: System::Void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		saveProfile();
-	}
 	};
 }

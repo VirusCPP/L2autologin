@@ -19,4 +19,10 @@ namespace L2autologin {
 	void mainWindow::startButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		ThreadPool::QueueUserWorkItem(gcnew WaitCallback(&launchApp), nullptr);
 	}
+	void mainWindow::loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		loadProfile();
+	}
+	void mainWindow::saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		saveProfile();
+	}
 }
