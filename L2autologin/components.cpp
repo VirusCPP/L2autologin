@@ -18,6 +18,7 @@ namespace L2autologin {
 		this->profileComboBox = (gcnew System::Windows::Forms::ComboBox());
 		this->saveProfileButton = (gcnew System::Windows::Forms::Button());
 		this->loadProfileButton = (gcnew System::Windows::Forms::Button());
+		this->removeProfileButton = (gcnew System::Windows::Forms::Button());
 		this->SuspendLayout();
 		// 
 		// accountNames
@@ -142,14 +143,9 @@ namespace L2autologin {
 		// 
 		this->profileComboBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 			static_cast<System::Int32>(static_cast<System::Byte>(64)));
-		this->profileComboBox->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 		this->profileComboBox->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->profileComboBox->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 		this->profileComboBox->FormattingEnabled = true;
-		this->profileComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-			L"[Profile 1]", L"[Profile 2]", L"[Profile 3]",
-				L"[Profile 4]", L"[Profile 5]"
-		});
 		this->profileComboBox->Location = System::Drawing::Point(482, 13);
 		this->profileComboBox->Name = L"profileComboBox";
 		this->profileComboBox->Size = System::Drawing::Size(171, 21);
@@ -185,6 +181,21 @@ namespace L2autologin {
 		this->loadProfileButton->UseVisualStyleBackColor = false;
 		this->loadProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::loadProfileButton_Click);
 		// 
+		// removeProfileButton
+		// 
+		this->removeProfileButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->removeProfileButton->FlatAppearance->BorderSize = 0;
+		this->removeProfileButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->removeProfileButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->removeProfileButton->Location = System::Drawing::Point(482, 106);
+		this->removeProfileButton->Name = L"removeProfileButton";
+		this->removeProfileButton->Size = System::Drawing::Size(171, 23);
+		this->removeProfileButton->TabIndex = 13;
+		this->removeProfileButton->Text = L"Удалить профиль";
+		this->removeProfileButton->UseVisualStyleBackColor = false;
+		this->removeProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::removeProfileButton_Click);
+		// 
 		// mainWindow
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -193,6 +204,7 @@ namespace L2autologin {
 			static_cast<System::Int32>(static_cast<System::Byte>(31)));
 		this->ClientSize = System::Drawing::Size(662, 169);
 		this->Controls->Add(this->loadProfileButton);
+		this->Controls->Add(this->removeProfileButton);
 		this->Controls->Add(this->saveProfileButton);
 		this->Controls->Add(this->profileComboBox);
 		this->Controls->Add(this->label2);

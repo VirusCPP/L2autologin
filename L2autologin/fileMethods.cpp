@@ -121,7 +121,6 @@ namespace L2autologin {
 	}
 
 	void mainWindow::saveData() {
-
 		StreamWriter^ sw = gcnew StreamWriter(_dataFileName, false);
 		sw->WriteLine(EncryptData("[Path] = " + Path, key, iv));
 		try {
@@ -131,11 +130,16 @@ namespace L2autologin {
 				sw->WriteLine(EncryptData("[Account Login] = " + account::accArray[i]->Login, key, iv));
 				sw->WriteLine(EncryptData("[Account Password] = " + account::accArray[i]->Password, key, iv));
 			}
+			sw->WriteLine();
+			for (int i = 0; i < profileComboBox->Items->Count; i++) {
+				sw->WriteLine(EncryptData("[Profile] = " + profileComboBox->Items[i]->ToString(), key, iv));
+			}
 		}
 		finally {
 			sw->Close();
 		}
 	}
+
 
 	void mainWindow::loadData() {
 		if (!File::Exists(_dataFileName)) {
@@ -158,24 +162,36 @@ namespace L2autologin {
 					else if (decryptedLine->StartsWith("[Account Name] = ")) {
 						String^ name = decryptedLine->Substring(17); // Извлекаем имя аккаунта
 						String^ encryptedLogin = sr->ReadLine();
-						String^ decryptedLogin = DecryptData(encryptedLogin, key, iv);
-						String^ login = decryptedLogin->Substring(18); // Извлекаем логин, пропуская "[Account Login] = "
+						if (!String::IsNullOrEmpty(encryptedLogin)) {
+							String^ decryptedLogin = DecryptData(encryptedLogin, key, iv);
+							String^ login = decryptedLogin->Substring(18); // Извлекаем логин, пропуская "[Account Login] = "
 
-						String^ encryptedPassword = sr->ReadLine();
-						String^ decryptedPassword = DecryptData(encryptedPassword, key, iv);
-						String^ password = decryptedPassword->Substring(21); // Извлекаем пароль, пропуская "[Account Password] = "
+							String^ encryptedPassword = sr->ReadLine();
+							if (!String::IsNullOrEmpty(encryptedPassword)) {
+								String^ decryptedPassword = DecryptData(encryptedPassword, key, iv);
+								String^ password = decryptedPassword->Substring(21); // Извлекаем пароль, пропуская "[Account Password] = "
 
-						sr->ReadLine(); // Пропускаем пустую строку, разделяющую записи аккаунтов
+								sr->ReadLine(); // Пропускаем пустую строку, разделяющую записи аккаунтов
 
-						account^ newAccount = gcnew account(name, login, password);
-						account::accArray->Add(newAccount);
-						mainWindow::accountNames->Items->Add({ name });
+								account^ newAccount = gcnew account(name, login, password);
+								account::accArray->Add(newAccount);
+								mainWindow::accountNames->Items->Add({ name });
+							}
+						}
+					}
+					else if (decryptedLine->StartsWith("[Profile] = ")) {
+						String^ profile = decryptedLine->Substring(12); // Извлекаем профиль, пропуская "[Profile] = "
+						profileComboBox->Items->Add({ profile });
 					}
 				}
 			}
+		}
+		catch (Exception^ e) {
+			MessageBox::Show("Error: " + e->Message + "\nStack Trace: " + e->StackTrace, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		finally {
 			sr->Close();
 		}
 	}
+
 }

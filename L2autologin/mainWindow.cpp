@@ -42,6 +42,18 @@ namespace L2autologin {
 		}
 	}
 
+	void mainWindow::removeProfile() {
+		if (profileComboBox->Text == "") {
+			return;
+		}
+		if (MessageBox::Show("Удалить выбранный профиль?", "Удаление профиля", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+			profileComboBox->Items->Remove(profileComboBox->Text);
+			profileComboBox->Text = "";
+			saveData();
+			saveProfile();
+		}
+	}
+
 	void mainWindow::chooseFolder() {
 		if (folderBrowserDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 			Path = folderBrowserDialog1->SelectedPath;
@@ -61,6 +73,15 @@ namespace L2autologin {
 	bool mainWindow::isAccountUnique(String^ name, String^ login) {
 		for (int i = 0; i < account::accArray->Count; i++) {
 			if (account::accArray[i]->Name == name || account::accArray[i]->Login == login) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	bool mainWindow::isProfileUnique(String^ profileName) {
+		for (int i = 0; i < profileComboBox->Items->Count; i++) {
+			if (profileComboBox->Items[i]->ToString() == profileName) {
 				return false;
 			}
 		}

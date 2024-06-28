@@ -23,6 +23,13 @@ namespace L2autologin {
 		loadProfile();
 	}
 	void mainWindow::saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (isProfileUnique(profileComboBox->Text)) {
+			mainWindow::profileComboBox->Items->Add({ profileComboBox->Text });
+		}
 		saveProfile();
+		saveData();
+	}
+	void mainWindow::removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		removeProfile();
 	}
 }

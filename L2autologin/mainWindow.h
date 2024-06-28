@@ -27,6 +27,8 @@ namespace L2autologin {
 			checkPathStatus();
 		}
 		static int _delay;
+	private: System::Windows::Forms::Button^ removeProfileButton;
+	public:
 
 	public:
 	
@@ -35,9 +37,12 @@ namespace L2autologin {
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
 		static void removeAccount();
+		static void removeProfile();
 		void addPathButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void startButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static bool isAccountUnique(String^ name, String^ login);
+		static bool isProfileUnique(String^ profileName);
+		void removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void launchApp(Object^ state);
@@ -51,12 +56,24 @@ namespace L2autologin {
 		void textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e);
 		static String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv);
 		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
-		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
-		static System::Windows::Forms::Button^ startButton;
-		static System::Windows::Forms::TextBox^ PathBox;
-		static System::Windows::Forms::TextBox^ DelayBox;
-		static System::Windows::Forms::CheckedListBox^ accountNames;
-		static System::Windows::Forms::ComboBox^ profileComboBox;
+	static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
+	static System::Windows::Forms::Button^ startButton;
+	static System::Windows::Forms::TextBox^ PathBox;
+	static System::Windows::Forms::TextBox^ DelayBox;
+	static System::Windows::Forms::CheckedListBox^ accountNames;
+	static System::Windows::Forms::ComboBox^ profileComboBox;
+
+
+
+
+
+
+
+
+
+
+
+
 		static String^ _dataFileName = "Data.bin";
 		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;
