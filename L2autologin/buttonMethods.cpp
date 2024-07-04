@@ -27,13 +27,15 @@ namespace L2autologin {
 	}
 
 	void mainWindow::saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (profileComboBox->Text != "") {
+		if (profileComboBox->Text != "" && accountNames->CheckedItems->Count != 0) {
 			if (isProfileUnique(profileComboBox->Text)) {
 				mainWindow::profileComboBox->Items->Add({ profileComboBox->Text });
 			}
 			saveProfile();
 			saveData();
 		}
+		else
+			MessageBox::Show("Не выбран ни один аккаунт или не введено название профиля", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
 
 	void mainWindow::removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
