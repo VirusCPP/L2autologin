@@ -79,6 +79,9 @@ namespace L2autologin {
 						sw->WriteLine(fileLine);
 					}
 				}
+				catch (Exception^ ex) {
+					MessageBox::Show("Error: " + ex->Message + "\nStack Trace: " + ex->StackTrace, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
 				finally {
 					sw->Close();
 				}
@@ -115,6 +118,9 @@ namespace L2autologin {
 				}
 			}
 		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error: " + ex->Message + "\nStack Trace: " + ex->StackTrace, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 		finally {
 			sr->Close();
 		}
@@ -134,6 +140,9 @@ namespace L2autologin {
 			for (int i = 0; i < profileComboBox->Items->Count; i++) {
 				sw->WriteLine(EncryptData("[Profile] = " + profileComboBox->Items[i]->ToString(), key, iv));
 			}
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Error: " + ex->Message + "\nStack Trace: " + ex->StackTrace, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		finally {
 			sw->Close();
@@ -186,8 +195,8 @@ namespace L2autologin {
 				}
 			}
 		}
-		catch (Exception^ e) {
-			MessageBox::Show("Error: " + e->Message + "\nStack Trace: " + e->StackTrace, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		catch (Exception^ ex) {
+			MessageBox::Show("Error: " + ex->Message + "\nStack Trace: " + ex->StackTrace, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		finally {
 			sr->Close();
