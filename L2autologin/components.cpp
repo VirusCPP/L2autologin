@@ -19,6 +19,7 @@ namespace L2autologin {
 		this->saveProfileButton = (gcnew System::Windows::Forms::Button());
 		this->removeProfileButton = (gcnew System::Windows::Forms::Button());
 		this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
+		this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 		this->SuspendLayout();
 		// 
 		// accountNames
@@ -189,6 +190,18 @@ namespace L2autologin {
 		this->progressBar1->Size = System::Drawing::Size(168, 23);
 		this->progressBar1->TabIndex = 14;
 		// 
+		// checkBox1
+		// 
+		this->checkBox1->AutoSize = true;
+		this->checkBox1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->checkBox1->Location = System::Drawing::Point(482, 106);
+		this->checkBox1->Name = L"checkBox1";
+		this->checkBox1->Size = System::Drawing::Size(116, 17);
+		this->checkBox1->TabIndex = 15;
+		this->checkBox1->Text = L"Поверх всех окон";
+		this->checkBox1->UseVisualStyleBackColor = true;
+		this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &mainWindow::checkBox1_CheckedChanged);
+		// 
 		// mainWindow
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -196,6 +209,7 @@ namespace L2autologin {
 		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(31)),
 			static_cast<System::Int32>(static_cast<System::Byte>(31)));
 		this->ClientSize = System::Drawing::Size(662, 169);
+		this->Controls->Add(this->checkBox1);
 		this->Controls->Add(this->progressBar1);
 		this->Controls->Add(this->removeProfileButton);
 		this->Controls->Add(this->saveProfileButton);

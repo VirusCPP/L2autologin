@@ -34,9 +34,13 @@ namespace L2autologin {
 			checkPathStatus();
 		}
 		static int _delay;
-	
+	private: System::Windows::Forms::CheckBox^ checkBox1;
 	public:
+
+	public:
+		static mainWindow^ mainWindowInstance;
 		static String^ _version = L"0.9";
+		static bool _onTop = false;
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
@@ -67,11 +71,7 @@ namespace L2autologin {
 		static System::Windows::Forms::CheckedListBox^ accountNames;
 		static System::Windows::Forms::ComboBox^ profileComboBox;
 		static System::Windows::Forms::ProgressBar^ progressBar1;
-
-
-
-
-
+		void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
 		static String^ _dataFileName = "Data.bin";
 		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;
