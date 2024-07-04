@@ -101,6 +101,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::launchApp(Object^ state) {
+		progressBar1->Value = 0;
 		Process^ proc = gcnew Process();
 		Int32::TryParse(DelayBox->Text, _delay);
 		proc->StartInfo->FileName = Path + "\\L2.exe";
@@ -125,9 +126,6 @@ namespace L2autologin {
 		}
 		catch (...) {
 			MessageBox::Show("Не найден файл L2.exe, проверьте путь до папки System", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		}
-		finally {
-			progressBar1->Value = 0;
 		}
 	}
 }
