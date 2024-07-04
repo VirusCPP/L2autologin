@@ -100,7 +100,6 @@ namespace L2autologin {
 			if (accountNames->CheckedItems->Count != 0) {
 				for (int i = 0; i < account::accArray->Count; i++) {
 					if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
-						//progressBar1->Value = 0;
 						accountNames->SetItemCheckState(i, CheckState::Unchecked);
 						String^ parm1 = account::accArray[i]->Login;
 						String^ parm2 = account::accArray[i]->Password;
@@ -119,6 +118,5 @@ namespace L2autologin {
 			MessageBox::Show("Не найден файл L2.exe, проверьте путь до папки System", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		progressBar1->Value = 0;
-		progressBar1->Text = L"Все окна загружены";
 	}
 }
