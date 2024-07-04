@@ -80,7 +80,6 @@ namespace L2autologin {
 		}
 
 	private: 
-		String^ connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\source\\SiteCore65\\Individual-Data.xls;Extended Properties=Excel 8.0;";
 		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
 		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
 		System::Windows::Forms::Label^ label1;
