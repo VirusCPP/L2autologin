@@ -119,7 +119,11 @@ namespace L2autologin {
 			}
 		}
 		catch (Exception^ ex) {
-			MessageBox::Show("Error: " + ex->Message + "\nStack Trace: " + ex->StackTrace, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("Ошибка загрузки профиля, профиль будет удален!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			profileComboBox->Items->Remove(profileComboBox->Text);
+			profileComboBox->Text = "";
+			saveData();
+			saveProfile();
 		}
 		finally {
 			sr->Close();
