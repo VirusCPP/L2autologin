@@ -18,6 +18,7 @@ namespace L2autologin {
 		this->profileComboBox = (gcnew System::Windows::Forms::ComboBox());
 		this->saveProfileButton = (gcnew System::Windows::Forms::Button());
 		this->removeProfileButton = (gcnew System::Windows::Forms::Button());
+		this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 		this->SuspendLayout();
 		// 
 		// accountNames
@@ -181,6 +182,13 @@ namespace L2autologin {
 		this->removeProfileButton->UseVisualStyleBackColor = false;
 		this->removeProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::removeProfileButton_Click);
 		// 
+		// progressBar1
+		// 
+		this->progressBar1->Location = System::Drawing::Point(482, 130);
+		this->progressBar1->Name = L"progressBar1";
+		this->progressBar1->Size = System::Drawing::Size(168, 23);
+		this->progressBar1->TabIndex = 14;
+		// 
 		// mainWindow
 		// 
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -188,6 +196,7 @@ namespace L2autologin {
 		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(31)),
 			static_cast<System::Int32>(static_cast<System::Byte>(31)));
 		this->ClientSize = System::Drawing::Size(662, 169);
+		this->Controls->Add(this->progressBar1);
 		this->Controls->Add(this->removeProfileButton);
 		this->Controls->Add(this->saveProfileButton);
 		this->Controls->Add(this->profileComboBox);

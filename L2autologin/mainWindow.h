@@ -20,6 +20,7 @@ namespace L2autologin {
 	using namespace System::Collections::Generic;
 	using namespace System::Diagnostics;
 	using namespace System::Threading;
+	using namespace System::Windows;
 
 	
 	public ref class mainWindow : public System::Windows::Forms::Form
@@ -33,6 +34,8 @@ namespace L2autologin {
 			checkPathStatus();
 		}
 		static int _delay;
+	
+	public:
 		static String^ _version = L"0.9";
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
@@ -63,6 +66,12 @@ namespace L2autologin {
 		static System::Windows::Forms::TextBox^ DelayBox;
 		static System::Windows::Forms::CheckedListBox^ accountNames;
 		static System::Windows::Forms::ComboBox^ profileComboBox;
+		static System::Windows::Forms::ProgressBar^ progressBar1;
+
+
+
+
+
 		static String^ _dataFileName = "Data.bin";
 		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;

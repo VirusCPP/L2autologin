@@ -96,19 +96,21 @@ namespace L2autologin {
 		Int32::TryParse(DelayBox->Text, _delay);
 		proc->StartInfo->FileName = Path + "\\L2.exe";
 		try {
+			int progress = accountNames->CheckedItems->Count;
 			if (accountNames->CheckedItems->Count != 0) {
 				for (int i = 0; i < account::accArray->Count; i++) {
 					if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
+						//progressBar1->Value = 0;
 						accountNames->SetItemCheckState(i, CheckState::Unchecked);
 						String^ parm1 = account::accArray[i]->Login;
 						String^ parm2 = account::accArray[i]->Password;
 						proc->StartInfo->Arguments = "account=" + parm1 + " " + "password=" + parm2;
 						proc->Start();
 						System::Threading::Thread::Sleep(_delay);
+						progressBar1->Increment(100 / progress);
 					}
 				}
 			}
-
 			else {
 				proc->Start();
 			}
@@ -116,5 +118,7 @@ namespace L2autologin {
 		catch (...) {
 			MessageBox::Show("Не найден файл L2.exe, проверьте путь до папки System", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+		progressBar1->Value = 0;
+		progressBar1->Text = L"Все окна загружены";
 	}
 }
