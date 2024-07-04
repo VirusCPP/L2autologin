@@ -1,6 +1,7 @@
 #include "mainWindow.h"
 #include "addAccountForm.h"
 
+using namespace System::Security::Cryptography;
 namespace L2autologin {
 	String^ mainWindow::EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv) {
 		Aes^ aes = Aes::Create();

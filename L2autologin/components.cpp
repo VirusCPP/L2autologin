@@ -17,7 +17,6 @@ namespace L2autologin {
 		this->label2 = (gcnew System::Windows::Forms::Label());
 		this->profileComboBox = (gcnew System::Windows::Forms::ComboBox());
 		this->saveProfileButton = (gcnew System::Windows::Forms::Button());
-		this->loadProfileButton = (gcnew System::Windows::Forms::Button());
 		this->removeProfileButton = (gcnew System::Windows::Forms::Button());
 		this->SuspendLayout();
 		// 
@@ -150,6 +149,7 @@ namespace L2autologin {
 		this->profileComboBox->Name = L"profileComboBox";
 		this->profileComboBox->Size = System::Drawing::Size(171, 21);
 		this->profileComboBox->TabIndex = 12;
+		this->profileComboBox->SelectedIndexChanged += gcnew System::EventHandler(this, &mainWindow::loadProfileButton_Click);
 		// 
 		// saveProfileButton
 		// 
@@ -158,28 +158,13 @@ namespace L2autologin {
 		this->saveProfileButton->FlatAppearance->BorderSize = 0;
 		this->saveProfileButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->saveProfileButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-		this->saveProfileButton->Location = System::Drawing::Point(482, 73);
+		this->saveProfileButton->Location = System::Drawing::Point(482, 40);
 		this->saveProfileButton->Name = L"saveProfileButton";
 		this->saveProfileButton->Size = System::Drawing::Size(171, 23);
 		this->saveProfileButton->TabIndex = 13;
 		this->saveProfileButton->Text = L"Сохранить профиль";
 		this->saveProfileButton->UseVisualStyleBackColor = false;
 		this->saveProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::saveProfileButton_Click);
-		// 
-		// loadProfileButton
-		// 
-		this->loadProfileButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
-			static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
-		this->loadProfileButton->FlatAppearance->BorderSize = 0;
-		this->loadProfileButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-		this->loadProfileButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-		this->loadProfileButton->Location = System::Drawing::Point(482, 40);
-		this->loadProfileButton->Name = L"loadProfileButton";
-		this->loadProfileButton->Size = System::Drawing::Size(171, 23);
-		this->loadProfileButton->TabIndex = 14;
-		this->loadProfileButton->Text = L"Загрузить профиль";
-		this->loadProfileButton->UseVisualStyleBackColor = false;
-		this->loadProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::loadProfileButton_Click);
 		// 
 		// removeProfileButton
 		// 
@@ -188,7 +173,7 @@ namespace L2autologin {
 		this->removeProfileButton->FlatAppearance->BorderSize = 0;
 		this->removeProfileButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->removeProfileButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-		this->removeProfileButton->Location = System::Drawing::Point(482, 106);
+		this->removeProfileButton->Location = System::Drawing::Point(482, 73);
 		this->removeProfileButton->Name = L"removeProfileButton";
 		this->removeProfileButton->Size = System::Drawing::Size(171, 23);
 		this->removeProfileButton->TabIndex = 13;
@@ -203,7 +188,6 @@ namespace L2autologin {
 		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(31)),
 			static_cast<System::Int32>(static_cast<System::Byte>(31)));
 		this->ClientSize = System::Drawing::Size(662, 169);
-		this->Controls->Add(this->loadProfileButton);
 		this->Controls->Add(this->removeProfileButton);
 		this->Controls->Add(this->saveProfileButton);
 		this->Controls->Add(this->profileComboBox);

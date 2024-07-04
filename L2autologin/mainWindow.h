@@ -18,7 +18,6 @@ namespace L2autologin {
 	using namespace System::Collections::Generic;
 	using namespace System::Diagnostics;
 	using namespace System::Threading;
-	using namespace System::Security::Cryptography;
 
 	
 	public ref class mainWindow : public System::Windows::Forms::Form
@@ -85,7 +84,6 @@ namespace L2autologin {
 		System::Windows::Forms::Label^ label1;
 		System::Windows::Forms::Label^ label2;
 		System::Windows::Forms::Button^ saveProfileButton;
-		System::Windows::Forms::Button^ loadProfileButton;
 		System::Windows::Forms::Button^ addPathButton;
 		System::Windows::Forms::Button^ removeProfileButton;
 	};
