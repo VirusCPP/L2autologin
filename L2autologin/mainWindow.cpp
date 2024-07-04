@@ -127,5 +127,8 @@ namespace L2autologin {
 		catch (...) {
 			MessageBox::Show("Не найден файл L2.exe, проверьте путь до папки System", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+		finally {
+			progressBar1->Value = 100;
+		}
 	}
 }
