@@ -33,11 +33,8 @@ namespace L2autologin {
 			loadData();
 			checkPathStatus();
 		}
-		static int _delay;
-	private: System::Windows::Forms::CheckBox^ checkBox1;
-	public:
 
-	public:
+		static int _delay;
 		static mainWindow^ mainWindowInstance;
 		static String^ _version = L"0.9";
 		static bool _onTop = false;
@@ -96,5 +93,6 @@ namespace L2autologin {
 		System::Windows::Forms::Button^ saveProfileButton;
 		System::Windows::Forms::Button^ addPathButton;
 		System::Windows::Forms::Button^ removeProfileButton;
+		System::Windows::Forms::CheckBox^ checkBox1;
 	};
 }
