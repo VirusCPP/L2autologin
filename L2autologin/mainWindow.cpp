@@ -93,11 +93,9 @@ namespace L2autologin {
 
 	void mainWindow::checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (checkBox1->Checked) {
-			_onTop = true;
 			mainWindowInstance->TopMost = true;
 		}
 		else {
-			_onTop = false;
 			mainWindowInstance->TopMost = false;
 		}
 	}

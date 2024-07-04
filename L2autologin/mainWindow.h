@@ -37,7 +37,6 @@ namespace L2autologin {
 		static int _delay;
 		static mainWindow^ mainWindowInstance;
 		static String^ _version = L"0.9";
-		static bool _onTop = false;
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		static void addAccount(String^ name, String^ login, String^ password);
