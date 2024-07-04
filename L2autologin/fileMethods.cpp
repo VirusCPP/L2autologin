@@ -119,8 +119,8 @@ namespace L2autologin {
 			}
 		}
 		catch (Exception^ ex) {
-			if (MessageBox::Show("Ошибка загрузки профиля, удалить профиль?", "Ошибка", MessageBoxButtons::YesNo, MessageBoxIcon::Error) 
-				== System::Windows::Forms::DialogResult::Yes) {
+			if (MessageBox::Show("Ошибка загрузки профиля, удалить профиль?", "Ошибка", 
+					MessageBoxButtons::YesNo, MessageBoxIcon::Error) == System::Windows::Forms::DialogResult::Yes) {
 				profileComboBox->Items->Remove(profileComboBox->Text);
 				profileComboBox->Text = "";
 				saveData();

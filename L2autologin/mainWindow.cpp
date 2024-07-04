@@ -24,14 +24,16 @@ namespace L2autologin {
 			saveData();
 		}
 		else
-			MessageBox::Show("Аккаунт с такими данными уже существует", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Аккаунт с такими данными уже существует", "Ошибка", 
+				MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 
 	void mainWindow::removeAccount() {
 		if (accountNames->CheckedItems->Count == 0) {
 			return;
 		}
-		if (MessageBox::Show("Удалить выбранные аккаунты?", "Удаление аккаунтов", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+		if (MessageBox::Show("Удалить выбранные аккаунты?", "Удаление аккаунтов", 
+				MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
 			for (int i = account::accArray->Count - 1; i >= 0 ; i--) {
 				if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
 					accountNames->Items->RemoveAt(i);
@@ -46,7 +48,8 @@ namespace L2autologin {
 		if (profileComboBox->Text == "") {
 			return;
 		}
-		if (MessageBox::Show("Удалить выбранный профиль?", "Удаление профиля", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+		if (MessageBox::Show("Удалить выбранный профиль?", "Удаление профиля", 
+				MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
 			profileComboBox->Items->Remove(profileComboBox->Text);
 			profileComboBox->Text = "";
 			saveData();
