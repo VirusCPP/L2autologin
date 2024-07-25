@@ -1,5 +1,7 @@
 #pragma once
 #include <msclr\marshal_cppstd.h>
+#include <tlhelp32.h>
+#include <windows.h>
 
 #if defined _WIN64
 #pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='amd64' publicKeyToken='6595b64144ccf1df' language='*'\"")
@@ -22,10 +24,9 @@ namespace L2autologin {
 	using namespace System::Threading;
 	using namespace System::Windows;
 
-	
 	public ref class mainWindow : public System::Windows::Forms::Form
 	{
-
+	
 	public:
 		mainWindow(void)
 		{
