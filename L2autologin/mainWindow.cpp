@@ -61,8 +61,14 @@ namespace L2autologin {
 		if (folderBrowserDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 			Path = folderBrowserDialog1->SelectedPath;
 			PathBox->Text = Path;
-			saveData();
-			checkPathStatus();
+			if (!System::IO::File::Exists(Path + "\\L2.exe")) {
+				MessageBox::Show("Файл L2.exe не найден", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			else {
+				MessageBox::Show("Файл L2.exe найден", "L2AutoLogin", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				saveData();
+				checkPathStatus();
+			}
 		}
 	}
 
