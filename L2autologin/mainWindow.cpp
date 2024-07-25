@@ -67,7 +67,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::checkPathStatus() {
-		if (PathBox->Text == "") {
+		if (!System::IO::File::Exists(Path + "\\L2.exe")) {
 			startButton->Enabled = false;
 			protocolButton->Enabled = false;
 		}
