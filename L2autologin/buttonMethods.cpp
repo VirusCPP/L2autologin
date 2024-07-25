@@ -16,10 +16,6 @@ namespace L2autologin {
 		removeAccount();
 	}
 
-	void mainWindow::showLoginPasswordButton_Click(System::Object^ sender, System::EventArgs^ e) {
-			showLoginPassword();
-	}
-
 	void mainWindow::startButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		ThreadPool::QueueUserWorkItem(gcnew WaitCallback(&launchApp), nullptr);
 	}
@@ -27,6 +23,13 @@ namespace L2autologin {
 	void mainWindow::loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (profileComboBox->Text != "") {
 			loadProfile();
+		}
+	}
+
+	void mainWindow::mainWindow_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+		if (e->KeyChar == 'l')
+		{
+			showLoginPassword();
 		}
 	}
 

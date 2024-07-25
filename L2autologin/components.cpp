@@ -21,7 +21,6 @@ namespace L2autologin {
 		this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 		this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 		this->protocolButton = (gcnew System::Windows::Forms::Button());
-		this->showLoginPassworButton = (gcnew System::Windows::Forms::Button());
 		this->SuspendLayout();
 		// 
 		// accountNames
@@ -74,9 +73,9 @@ namespace L2autologin {
 		this->startButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->startButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 		this->startButton->ImageKey = L"(отсутствует)";
-		this->startButton->Location = System::Drawing::Point(326, 130);
+		this->startButton->Location = System::Drawing::Point(326, 101);
 		this->startButton->Name = L"startButton";
-		this->startButton->Size = System::Drawing::Size(150, 23);
+		this->startButton->Size = System::Drawing::Size(150, 52);
 		this->startButton->TabIndex = 6;
 		this->startButton->Text = L"СТАРТ";
 		this->startButton->UseVisualStyleBackColor = false;
@@ -217,22 +216,7 @@ namespace L2autologin {
 		this->protocolButton->TabIndex = 8;
 		this->protocolButton->Text = L"Версия протокола";
 		this->protocolButton->UseVisualStyleBackColor = false;
-		this->protocolButton->Click += gcnew System::EventHandler(this, &mainWindow::showLoginPasswordButton_Click);
-		// 
-		// showLoginPassworButton
-		// 
-		this->showLoginPassworButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
-			static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
-		this->showLoginPassworButton->FlatAppearance->BorderSize = 0;
-		this->showLoginPassworButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-		this->showLoginPassworButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-		this->showLoginPassworButton->Location = System::Drawing::Point(326, 100);
-		this->showLoginPassworButton->Name = L"showLoginPassworButton";
-		this->showLoginPassworButton->Size = System::Drawing::Size(150, 23);
-		this->showLoginPassworButton->TabIndex = 5;
-		this->showLoginPassworButton->Text = L"Показать логин и пароль";
-		this->showLoginPassworButton->UseVisualStyleBackColor = false;
-		this->showLoginPassworButton->Click += gcnew System::EventHandler(this, &mainWindow::showLoginPasswordButton_Click);
+		this->protocolButton->Click += gcnew System::EventHandler(this, &mainWindow::showProtocol_Click);
 		// 
 		// mainWindow
 		// 
@@ -253,17 +237,18 @@ namespace L2autologin {
 		this->Controls->Add(this->addPathButton);
 		this->Controls->Add(this->PathBox);
 		this->Controls->Add(this->startButton);
-		this->Controls->Add(this->showLoginPassworButton);
 		this->Controls->Add(this->addButton);
 		this->Controls->Add(this->removeButton);
 		this->Controls->Add(this->accountNames);
 		this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 		this->ImeMode = System::Windows::Forms::ImeMode::On;
+		this->KeyPreview = true;
 		this->MaximumSize = System::Drawing::Size(678, 208);
 		this->MinimumSize = System::Drawing::Size(678, 208);
 		this->Name = L"mainWindow";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 		this->Text = L"L2 AutoLogin by VirusCPP";
+		this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &mainWindow::mainWindow_KeyPress);
 		this->ResumeLayout(false);
 		this->PerformLayout();
 

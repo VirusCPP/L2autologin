@@ -36,7 +36,6 @@ namespace L2autologin {
 
 		static int _delay;
 		static mainWindow^ mainWindowInstance;
-	public:
 		static String^ _version = L"0.9";
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
@@ -50,8 +49,8 @@ namespace L2autologin {
 		void removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
-		void showLoginPasswordButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void showProtocol_Click(System::Object^ sender, System::EventArgs^ e);
+		void mainWindow_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e);
 		static void launchApp(Object^ state);
 		static void saveData();
 		static void loadData();
@@ -72,7 +71,6 @@ namespace L2autologin {
 		static System::Windows::Forms::CheckedListBox^ accountNames;
 		static System::Windows::Forms::ComboBox^ profileComboBox;
 		static System::Windows::Forms::ProgressBar^ progressBar1;
-		static System::Windows::Forms::Button^ showLoginPassworButton;
 		void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
 		static String^ _dataFileName = "Data.bin";
 		static String^ _profileFileName = "Profile.ini";
@@ -99,6 +97,5 @@ namespace L2autologin {
 		System::Windows::Forms::Button^ addPathButton;
 		System::Windows::Forms::Button^ removeProfileButton;
 		System::Windows::Forms::CheckBox^ checkBox1;
-	
 	};
 }
