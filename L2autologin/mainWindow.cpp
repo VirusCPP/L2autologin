@@ -104,7 +104,6 @@ namespace L2autologin {
 		catch (Exception^ ex) {
 			ex;
 		}
-		
 	}
 
 	bool mainWindow::isAccountUnique(String^ name, String^ login) {
