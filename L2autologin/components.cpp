@@ -8,7 +8,7 @@ namespace L2autologin {
 		this->accountNames = (gcnew System::Windows::Forms::CheckedListBox());
 		this->removeButton = (gcnew System::Windows::Forms::Button());
 		this->addButton = (gcnew System::Windows::Forms::Button());
-		this->folderBrowserDialog1 = (gcnew System::Windows::Forms::FolderBrowserDialog());
+		this->folderBrowserDialog = (gcnew System::Windows::Forms::FolderBrowserDialog());
 		this->startButton = (gcnew System::Windows::Forms::Button());
 		this->PathBox = (gcnew System::Windows::Forms::TextBox());
 		this->addPathButton = (gcnew System::Windows::Forms::Button());

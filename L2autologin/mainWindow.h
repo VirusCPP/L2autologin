@@ -62,7 +62,7 @@ namespace L2autologin {
 		void textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e);
 		static String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv);
 		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
-		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
+		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog;
 		static System::Windows::Forms::Button^ startButton;
 		static System::Windows::Forms::Button^ protocolButton;
 		static System::Windows::Forms::TextBox^ PathBox;
