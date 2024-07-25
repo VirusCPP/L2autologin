@@ -16,6 +16,10 @@ namespace L2autologin {
 		removeAccount();
 	}
 
+	void mainWindow::showLoginPasswordButton_Click(System::Object^ sender, System::EventArgs^ e) {
+			showLoginPassword();
+	}
+
 	void mainWindow::startButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		ThreadPool::QueueUserWorkItem(gcnew WaitCallback(&launchApp), nullptr);
 	}

@@ -21,6 +21,7 @@ namespace L2autologin {
 		this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 		this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 		this->protocolButton = (gcnew System::Windows::Forms::Button());
+		this->showLoginPassworButton = (gcnew System::Windows::Forms::Button());
 		this->SuspendLayout();
 		// 
 		// accountNames
@@ -73,9 +74,9 @@ namespace L2autologin {
 		this->startButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->startButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 		this->startButton->ImageKey = L"(отсутствует)";
-		this->startButton->Location = System::Drawing::Point(326, 101);
+		this->startButton->Location = System::Drawing::Point(326, 130);
 		this->startButton->Name = L"startButton";
-		this->startButton->Size = System::Drawing::Size(136, 52);
+		this->startButton->Size = System::Drawing::Size(150, 23);
 		this->startButton->TabIndex = 6;
 		this->startButton->Text = L"СТАРТ";
 		this->startButton->UseVisualStyleBackColor = false;
@@ -90,7 +91,7 @@ namespace L2autologin {
 		this->PathBox->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 		this->PathBox->Location = System::Drawing::Point(204, 12);
 		this->PathBox->Name = L"PathBox";
-		this->PathBox->Size = System::Drawing::Size(258, 20);
+		this->PathBox->Size = System::Drawing::Size(272, 20);
 		this->PathBox->TabIndex = 7;
 		// 
 		// addPathButton
@@ -102,7 +103,7 @@ namespace L2autologin {
 		this->addPathButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 		this->addPathButton->Location = System::Drawing::Point(204, 40);
 		this->addPathButton->Name = L"addPathButton";
-		this->addPathButton->Size = System::Drawing::Size(128, 23);
+		this->addPathButton->Size = System::Drawing::Size(140, 23);
 		this->addPathButton->TabIndex = 8;
 		this->addPathButton->Text = L"Выбрать папку System";
 		this->addPathButton->UseVisualStyleBackColor = false;
@@ -203,20 +204,35 @@ namespace L2autologin {
 		this->checkBox1->UseVisualStyleBackColor = true;
 		this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &mainWindow::checkBox1_CheckedChanged);
 		// 
-		// button1
+		// protocolButton
 		// 
 		this->protocolButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 			static_cast<System::Int32>(static_cast<System::Byte>(64)));
 		this->protocolButton->FlatAppearance->BorderSize = 0;
 		this->protocolButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->protocolButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-		this->protocolButton->Location = System::Drawing::Point(334, 40);
-		this->protocolButton->Name = L"button1";
-		this->protocolButton->Size = System::Drawing::Size(128, 23);
+		this->protocolButton->Location = System::Drawing::Point(350, 40);
+		this->protocolButton->Name = L"protocolButton";
+		this->protocolButton->Size = System::Drawing::Size(126, 23);
 		this->protocolButton->TabIndex = 8;
 		this->protocolButton->Text = L"Версия протокола";
 		this->protocolButton->UseVisualStyleBackColor = false;
-		this->protocolButton->Click += gcnew System::EventHandler(this, &mainWindow::showProtocol_Click);
+		this->protocolButton->Click += gcnew System::EventHandler(this, &mainWindow::showLoginPasswordButton_Click);
+		// 
+		// showLoginPassworButton
+		// 
+		this->showLoginPassworButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->showLoginPassworButton->FlatAppearance->BorderSize = 0;
+		this->showLoginPassworButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->showLoginPassworButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+		this->showLoginPassworButton->Location = System::Drawing::Point(326, 100);
+		this->showLoginPassworButton->Name = L"showLoginPassworButton";
+		this->showLoginPassworButton->Size = System::Drawing::Size(150, 23);
+		this->showLoginPassworButton->TabIndex = 5;
+		this->showLoginPassworButton->Text = L"Показать логин и пароль";
+		this->showLoginPassworButton->UseVisualStyleBackColor = false;
+		this->showLoginPassworButton->Click += gcnew System::EventHandler(this, &mainWindow::showLoginPasswordButton_Click);
 		// 
 		// mainWindow
 		// 
@@ -237,6 +253,7 @@ namespace L2autologin {
 		this->Controls->Add(this->addPathButton);
 		this->Controls->Add(this->PathBox);
 		this->Controls->Add(this->startButton);
+		this->Controls->Add(this->showLoginPassworButton);
 		this->Controls->Add(this->addButton);
 		this->Controls->Add(this->removeButton);
 		this->Controls->Add(this->accountNames);

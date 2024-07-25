@@ -83,6 +83,30 @@ namespace L2autologin {
 		}
 	}
 
+	void mainWindow::showLoginPassword() {
+		String^ Result = "Используйте \"CTRL + C\" чтобы скопировать текст \n\n";
+		try{
+			if (accountNames->CheckedItems->Count != 0) {
+				for (int i = 0; i < account::accArray->Count; i++) {
+					if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
+						String^ parm0 = account::accArray[i]->Name;
+						String^ parm1 = account::accArray[i]->Login;
+						String^ parm2 = account::accArray[i]->Password;
+						Result += parm0 + "\n" + "Login = " + parm1 + "\n"
+							+ "Password = " + parm2 + "\n\n";
+					}
+				}
+				MessageBox::Show(Result, "Show Login and Password", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else
+				MessageBox::Show("Выберите хотя бы один аккаунт", "Show Login and Password", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		catch (Exception^ ex) {
+			ex;
+		}
+		
+	}
+
 	bool mainWindow::isAccountUnique(String^ name, String^ login) {
 		for (int i = 0; i < account::accArray->Count; i++) {
 			if (account::accArray[i]->Name == name || account::accArray[i]->Login == login) {

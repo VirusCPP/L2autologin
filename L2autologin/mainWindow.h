@@ -50,6 +50,7 @@ namespace L2autologin {
 		void removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
+		void showLoginPasswordButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void showProtocol_Click(System::Object^ sender, System::EventArgs^ e);
 		static void launchApp(Object^ state);
 		static void saveData();
@@ -59,6 +60,7 @@ namespace L2autologin {
 		static void chooseFolder();
 		static void saveProfile();
 		static void loadProfile();
+		static void showLoginPassword();
 		void textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e);
 		static String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv);
 		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
@@ -70,6 +72,7 @@ namespace L2autologin {
 		static System::Windows::Forms::CheckedListBox^ accountNames;
 		static System::Windows::Forms::ComboBox^ profileComboBox;
 		static System::Windows::Forms::ProgressBar^ progressBar1;
+		static System::Windows::Forms::Button^ showLoginPassworButton;
 		void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
 		static String^ _dataFileName = "Data.bin";
 		static String^ _profileFileName = "Profile.ini";
