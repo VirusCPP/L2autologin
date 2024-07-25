@@ -75,10 +75,7 @@ namespace L2autologin {
 		static String^ _dataFileName = "Data.bin";
 		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;
-		System::Windows::Forms::Button^ removeButton;
-		System::Windows::Forms::Button^ addButton;
-		System::ComponentModel::Container^ components;
-
+		
 	protected:
 		~mainWindow()
 		{
@@ -97,5 +94,8 @@ namespace L2autologin {
 		System::Windows::Forms::Button^ addPathButton;
 		System::Windows::Forms::Button^ removeProfileButton;
 		System::Windows::Forms::CheckBox^ checkBox1;
+		System::Windows::Forms::Button^ removeButton;
+		System::Windows::Forms::Button^ addButton;
+		System::ComponentModel::Container^ components;
 	};
 }
