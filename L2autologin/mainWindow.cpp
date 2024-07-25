@@ -67,8 +67,8 @@ namespace L2autologin {
 			else {
 				MessageBox::Show("Файл L2.exe найден", "L2AutoLogin", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				saveData();
-				checkPathStatus();
 			}
+			checkPathStatus();
 		}
 	}
 
