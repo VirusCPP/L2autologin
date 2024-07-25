@@ -36,6 +36,7 @@ namespace L2autologin {
 
 		static int _delay;
 		static mainWindow^ mainWindowInstance;
+	public:
 		static String^ _version = L"0.9";
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
@@ -49,6 +50,7 @@ namespace L2autologin {
 		void removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
+		void showProtocol_Click(System::Object^ sender, System::EventArgs^ e);
 		static void launchApp(Object^ state);
 		static void saveData();
 		static void loadData();
@@ -62,6 +64,7 @@ namespace L2autologin {
 		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
 		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog1;
 		static System::Windows::Forms::Button^ startButton;
+		static System::Windows::Forms::Button^ protocolButton;
 		static System::Windows::Forms::TextBox^ PathBox;
 		static System::Windows::Forms::TextBox^ DelayBox;
 		static System::Windows::Forms::CheckedListBox^ accountNames;
@@ -93,5 +96,6 @@ namespace L2autologin {
 		System::Windows::Forms::Button^ addPathButton;
 		System::Windows::Forms::Button^ removeProfileButton;
 		System::Windows::Forms::CheckBox^ checkBox1;
+	
 	};
 }

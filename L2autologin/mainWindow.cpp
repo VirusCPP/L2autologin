@@ -67,10 +67,14 @@ namespace L2autologin {
 	}
 
 	void mainWindow::checkPathStatus() {
-		if (PathBox->Text == "")
+		if (PathBox->Text == "") {
 			startButton->Enabled = false;
-		else
+			protocolButton->Enabled = false;
+		}
+		else {
 			startButton->Enabled = true;
+			protocolButton->Enabled = true;
+		}
 	}
 
 	bool mainWindow::isAccountUnique(String^ name, String^ login) {

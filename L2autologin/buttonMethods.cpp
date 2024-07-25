@@ -41,4 +41,16 @@ namespace L2autologin {
 	void mainWindow::removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		removeProfile();
 	}
+	void mainWindow::showProtocol_Click(System::Object^ sender, System::EventArgs^ e) {
+		Process^ proc = gcnew Process();
+		try {
+			proc->StartInfo->FileName = Path + "\\L2.exe";
+			proc->StartInfo->Arguments = "-L2ProtocolVersion";
+			proc->Start();
+		}
+		catch(...)
+		{
+			MessageBox::Show("Ошибка запуска клиента игры", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+}
 }
