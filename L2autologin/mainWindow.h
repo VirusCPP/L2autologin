@@ -79,12 +79,10 @@ namespace L2autologin {
 		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;
 		
-		// Пример использования в событии нажатия кнопки "Вверх"
 		void btnMoveUp_Click(Object^ sender, EventArgs^ e) {
 			MoveItem(accountNames, -1); // -1 для сдвига вверх
 		}
 
-		// Пример использования в событии нажатия кнопки "Вниз"
 		void btnMoveDown_Click(Object^ sender, EventArgs^ e) {
 			MoveItem(accountNames, 1); // 1 для сдвига вниз
 		}
