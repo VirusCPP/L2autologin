@@ -3,6 +3,38 @@
 
 namespace L2autologin {
 
+	void mainWindow::MoveItem(CheckedListBox ^ listBox, int direction) {
+		// Получаем индекс выделенного элемента
+		int index = listBox->SelectedIndex;
+
+		// Если нет выделенного элемента или индекс невалидный
+		if (index < 0 || index >= listBox->Items->Count)
+			return;
+
+		// Новый индекс после перемещения
+		int newIndex = index + direction;
+
+		// Проверка на выход за границы списка
+		if (newIndex < 0 || newIndex >= listBox->Items->Count)
+			return;
+
+		// Сохранение текущего элемента
+		Object^ selectedItem = listBox->Items[index];
+		bool isChecked = listBox->GetItemChecked(index);
+
+		// Удаление текущего элемента
+		listBox->Items->RemoveAt(index);
+
+		// Вставка элемента на новую позицию
+		listBox->Items->Insert(newIndex, selectedItem);
+		listBox->SetItemChecked(newIndex, isChecked);
+
+		// Установка нового выделенного элемента
+		listBox->SelectedIndex = newIndex;
+	}
+
+
+
 	void mainWindow::textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e)
 	{
 		if (!Char::IsDigit(e->KeyChar) && e->KeyChar != '\b')

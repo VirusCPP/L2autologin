@@ -1,4 +1,4 @@
-#include "mainWindow.h"
+ï»¿#include "mainWindow.h"
 #include "addAccountForm.h"
 
 namespace L2autologin {
@@ -21,6 +21,8 @@ namespace L2autologin {
 		this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 		this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 		this->protocolButton = (gcnew System::Windows::Forms::Button());
+		this->button1 = (gcnew System::Windows::Forms::Button());
+		this->button2 = (gcnew System::Windows::Forms::Button());
 		this->SuspendLayout();
 		// 
 		// accountNames
@@ -33,7 +35,7 @@ namespace L2autologin {
 		this->accountNames->HorizontalScrollbar = true;
 		this->accountNames->Location = System::Drawing::Point(12, 12);
 		this->accountNames->Name = L"accountNames";
-		this->accountNames->Size = System::Drawing::Size(176, 137);
+		this->accountNames->Size = System::Drawing::Size(159, 152);
 		this->accountNames->TabIndex = 3;
 		// 
 		// removeButton
@@ -47,7 +49,7 @@ namespace L2autologin {
 		this->removeButton->Name = L"removeButton";
 		this->removeButton->Size = System::Drawing::Size(116, 23);
 		this->removeButton->TabIndex = 4;
-		this->removeButton->Text = L"Óäàëèòü àêêàóíò";
+		this->removeButton->Text = L"Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚";
 		this->removeButton->UseVisualStyleBackColor = false;
 		this->removeButton->Click += gcnew System::EventHandler(this, &mainWindow::removeAccButton_Click);
 		// 
@@ -62,7 +64,7 @@ namespace L2autologin {
 		this->addButton->Name = L"addButton";
 		this->addButton->Size = System::Drawing::Size(116, 23);
 		this->addButton->TabIndex = 5;
-		this->addButton->Text = L"Äîáàâèòü àêêàóíò";
+		this->addButton->Text = L"Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚";
 		this->addButton->UseVisualStyleBackColor = false;
 		this->addButton->Click += gcnew System::EventHandler(this, &mainWindow::addAccButton_Click);
 		// 
@@ -72,12 +74,12 @@ namespace L2autologin {
 			static_cast<System::Int32>(static_cast<System::Byte>(64)));
 		this->startButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		this->startButton->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-		this->startButton->ImageKey = L"(îòñóòñòâóåò)";
+		this->startButton->ImageKey = L"(Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚)";
 		this->startButton->Location = System::Drawing::Point(326, 101);
 		this->startButton->Name = L"startButton";
 		this->startButton->Size = System::Drawing::Size(150, 52);
 		this->startButton->TabIndex = 6;
-		this->startButton->Text = L"ÑÒÀÐÒ";
+		this->startButton->Text = L"Ð¡Ð¢ÐÐ Ð¢";
 		this->startButton->UseVisualStyleBackColor = false;
 		this->startButton->Click += gcnew System::EventHandler(this, &mainWindow::startButton_Click);
 		// 
@@ -104,7 +106,7 @@ namespace L2autologin {
 		this->addPathButton->Name = L"addPathButton";
 		this->addPathButton->Size = System::Drawing::Size(140, 23);
 		this->addPathButton->TabIndex = 8;
-		this->addPathButton->Text = L"Âûáðàòü ïàïêó System";
+		this->addPathButton->Text = L"Ð’Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ð¿Ð°Ð¿ÐºÑƒ System";
 		this->addPathButton->UseVisualStyleBackColor = false;
 		this->addPathButton->Click += gcnew System::EventHandler(this, &mainWindow::addPathButton_Click);
 		// 
@@ -116,7 +118,7 @@ namespace L2autologin {
 		this->label1->Name = L"label1";
 		this->label1->Size = System::Drawing::Size(173, 13);
 		this->label1->TabIndex = 9;
-		this->label1->Text = L"Çàäåðæêà ìåæäó çàïóñêîì îêîí";
+		this->label1->Text = L"Ð—Ð°Ð´ÐµÑ€Ð¶ÐºÐ° Ð¼ÐµÐ¶Ð´Ñƒ Ð·Ð°Ð¿ÑƒÑÐºÐ¾Ð¼ Ð¾ÐºÐ¾Ð½";
 		// 
 		// DelayBox
 		// 
@@ -139,7 +141,7 @@ namespace L2autologin {
 		this->label2->Name = L"label2";
 		this->label2->Size = System::Drawing::Size(22, 13);
 		this->label2->TabIndex = 11;
-		this->label2->Text = L"Ìñ";
+		this->label2->Text = L"ÐœÑ";
 		// 
 		// profileComboBox
 		// 
@@ -165,7 +167,7 @@ namespace L2autologin {
 		this->saveProfileButton->Name = L"saveProfileButton";
 		this->saveProfileButton->Size = System::Drawing::Size(171, 23);
 		this->saveProfileButton->TabIndex = 13;
-		this->saveProfileButton->Text = L"Ñîõðàíèòü ïðîôèëü";
+		this->saveProfileButton->Text = L"Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð¿Ñ€Ð¾Ñ„Ð¸Ð»ÑŒ";
 		this->saveProfileButton->UseVisualStyleBackColor = false;
 		this->saveProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::saveProfileButton_Click);
 		// 
@@ -180,7 +182,7 @@ namespace L2autologin {
 		this->removeProfileButton->Name = L"removeProfileButton";
 		this->removeProfileButton->Size = System::Drawing::Size(171, 23);
 		this->removeProfileButton->TabIndex = 13;
-		this->removeProfileButton->Text = L"Óäàëèòü ïðîôèëü";
+		this->removeProfileButton->Text = L"Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¿Ñ€Ð¾Ñ„Ð¸Ð»ÑŒ";
 		this->removeProfileButton->UseVisualStyleBackColor = false;
 		this->removeProfileButton->Click += gcnew System::EventHandler(this, &mainWindow::removeProfileButton_Click);
 		// 
@@ -199,7 +201,7 @@ namespace L2autologin {
 		this->checkBox1->Name = L"checkBox1";
 		this->checkBox1->Size = System::Drawing::Size(116, 17);
 		this->checkBox1->TabIndex = 15;
-		this->checkBox1->Text = L"Ïîâåðõ âñåõ îêîí";
+		this->checkBox1->Text = L"ÐŸÐ¾Ð²ÐµÑ€Ñ… Ð²ÑÐµÑ… Ð¾ÐºÐ¾Ð½";
 		this->checkBox1->UseVisualStyleBackColor = true;
 		this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &mainWindow::checkBox1_CheckedChanged);
 		// 
@@ -214,9 +216,39 @@ namespace L2autologin {
 		this->protocolButton->Name = L"protocolButton";
 		this->protocolButton->Size = System::Drawing::Size(126, 23);
 		this->protocolButton->TabIndex = 8;
-		this->protocolButton->Text = L"Âåðñèÿ ïðîòîêîëà";
+		this->protocolButton->Text = L"Ð’ÐµÑ€ÑÐ¸Ñ Ð¿Ñ€Ð¾Ñ‚Ð¾ÐºÐ¾Ð»Ð°";
 		this->protocolButton->UseVisualStyleBackColor = false;
 		this->protocolButton->Click += gcnew System::EventHandler(this, &mainWindow::showProtocol_Click);
+		// 
+		// button1
+		// 
+		this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->button1->FlatAppearance->BorderSize = 0;
+		this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->button1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+		this->button1->Location = System::Drawing::Point(177, 12);
+		this->button1->Name = L"button1";
+		this->button1->Size = System::Drawing::Size(20, 74);
+		this->button1->TabIndex = 16;
+		this->button1->Text = L"â†‘";
+		this->button1->UseVisualStyleBackColor = false;
+		this->button1->Click += gcnew System::EventHandler(this, &mainWindow::btnMoveUp_Click);
+		// 
+		// button2
+		// 
+		this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+			static_cast<System::Int32>(static_cast<System::Byte>(64)));
+		this->button2->FlatAppearance->BorderSize = 0;
+		this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+		this->button2->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+		this->button2->Location = System::Drawing::Point(177, 90);
+		this->button2->Name = L"button2";
+		this->button2->Size = System::Drawing::Size(20, 74);
+		this->button2->TabIndex = 16;
+		this->button2->Text = L"â†“";
+		this->button2->UseVisualStyleBackColor = false;
+		this->button2->Click += gcnew System::EventHandler(this, &mainWindow::btnMoveDown_Click);
 		// 
 		// mainWindow
 		// 
@@ -225,6 +257,8 @@ namespace L2autologin {
 		this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(31)), static_cast<System::Int32>(static_cast<System::Byte>(31)),
 			static_cast<System::Int32>(static_cast<System::Byte>(31)));
 		this->ClientSize = System::Drawing::Size(662, 169);
+		this->Controls->Add(this->button2);
+		this->Controls->Add(this->button1);
 		this->Controls->Add(this->checkBox1);
 		this->Controls->Add(this->progressBar1);
 		this->Controls->Add(this->removeProfileButton);
@@ -376,7 +410,7 @@ namespace L2autologin {
 		this->MinimumSize = System::Drawing::Size(355, 155);
 		this->Name = L"addAccountForm";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-		this->Text = L"Äîáàâëåíèå àêêàóíòà";
+		this->Text = L"Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð°";
 		this->ResumeLayout(false);
 		this->PerformLayout();
 
