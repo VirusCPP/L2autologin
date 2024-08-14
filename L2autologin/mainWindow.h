@@ -79,6 +79,7 @@ namespace L2autologin {
 		static String^ _dataFileName = "Data.bin";
 		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;
+		static void MoveSelectedItemsUp(CheckedListBox^ listBox);
 		
 		void btnMoveUp_Click(Object^ sender, EventArgs^ e) {
 			MoveItem(accountNames, -1); // -1 для сдвига вверх
@@ -89,30 +90,7 @@ namespace L2autologin {
 		}
 
 
-		static void MoveSelectedItemsUp(CheckedListBox^ listBox) {
-			// Список для хранения выделенных элементов
-			cliext::vector<Object^> selectedItems;
-			cliext::vector<bool> checkedStates;
-
-			// Проходим по всем элементам и собираем выделенные элементы
-			for (int i = 0; i < listBox->Items->Count; i++) {
-				if (listBox->GetItemChecked(i)) {
-					selectedItems.push_back(listBox->Items[i]);
-					checkedStates.push_back(true); // Сохраняем состояние checked
-				}
-			}
-
-			// Удаляем выделенные элементы из оригинального списка
-			for (int i = selectedItems.size() - 1; i >= 0; i--) {
-				listBox->Items->Remove(selectedItems[i]);
-			}
-
-			// Вставляем выделенные элементы в начало списка
-			for (int i = 0; i < selectedItems.size(); i++) {
-				listBox->Items->Insert(i, selectedItems[i]);
-				listBox->SetItemChecked(i, checkedStates[i]); // Восстанавливаем состояние checked
-			}
-		}
+		
 
 	protected:
 		~mainWindow()

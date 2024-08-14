@@ -3,6 +3,37 @@
 
 namespace L2autologin {
 
+	void mainWindow::MoveSelectedItemsUp(CheckedListBox^ listBox) {
+		// Список для хранения выделенных элементов
+		cliext::vector<Object^> selectedItems;
+		cliext::vector<account^> selectedAccounts;
+		cliext::vector<bool> checkedStates;
+
+		// Проходим по всем элементам и собираем выделенные элементы
+		for (int i = 0; i < listBox->Items->Count; i++) {
+			if (listBox->GetItemChecked(i)) {
+				selectedItems.push_back(listBox->Items[i]);
+				selectedAccounts.push_back(account::accArray[i]);
+				checkedStates.push_back(true); // Сохраняем состояние checked
+			}
+		}
+
+		// Удаляем выделенные элементы из оригинального списка и из accArray
+		for (int i = selectedItems.size() - 1; i >= 0; i--) {
+			int index = listBox->Items->IndexOf(selectedItems[i]);
+			listBox->Items->RemoveAt(index);
+			account::accArray->RemoveAt(index);
+		}
+
+		// Вставляем выделенные элементы в начало списка
+		for (int i = 0; i < selectedItems.size(); i++) {
+			listBox->Items->Insert(i, selectedItems[i]);
+			listBox->SetItemChecked(i, checkedStates[i]); // Восстанавливаем состояние checked
+			account::accArray->Insert(i, selectedAccounts[i]);
+		}
+	}
+
+
 	void mainWindow::MoveItem(CheckedListBox ^ listBox, int direction) {
 		// Получаем индекс выделенного элемента
 		int index = listBox->SelectedIndex;
