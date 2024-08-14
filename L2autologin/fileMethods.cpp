@@ -29,7 +29,7 @@ namespace L2autologin {
 							String^ indices = "";
 							for (int i = 0; i < account::accArray->Count; i++) {
 								if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
-									indices += i.ToString() + " ";
+									indices += accountNames->Items[i]->ToString() + " ";
 								}
 							}
 							fileLines->Add(indices->Trim());
@@ -90,6 +90,9 @@ namespace L2autologin {
 	}
 
 	void mainWindow::loadProfile() {
+		/*profileComboBox->Items->Clear();
+		accountNames->Items->Clear();
+		loadData();*/
 		if (!File::Exists(_profileFileName)) {
 			return;
 		}
@@ -108,9 +111,15 @@ namespace L2autologin {
 						array<String^>^ numberStrings =
 							numbersLine->Split(gcnew array<wchar_t>{ ' ' }, StringSplitOptions::RemoveEmptyEntries);
 						for each (String ^ numStr in numberStrings) {
-							int number;
-							if (Int32::TryParse(numStr, number)) {
-								accountNames->SetItemCheckState(number, CheckState::Checked);
+							// Перебираем все элементы в CheckedListBox
+							for (int i = 0; i < accountNames->Items->Count; i++) {
+								String^ itemName = accountNames->Items[i]->ToString();
+								// Сравниваем имя элемента с текущей строкой из numbersLine
+								if (itemName == numStr) {
+									// Если совпадает, отмечаем этот элемент
+									accountNames->SetItemCheckState(i, CheckState::Checked);
+									break; // Прекращаем поиск, так как элемент найден
+								}
 							}
 						}
 					}
@@ -130,6 +139,8 @@ namespace L2autologin {
 		finally {
 			sr->Close();
 		}
+		MoveSelectedItemsUp(accountNames);
+	
 	}
 
 	void mainWindow::saveData() {

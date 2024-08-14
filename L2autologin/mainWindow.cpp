@@ -33,8 +33,6 @@ namespace L2autologin {
 		listBox->SelectedIndex = newIndex;
 	}
 
-
-
 	void mainWindow::textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e)
 	{
 		if (!Char::IsDigit(e->KeyChar) && e->KeyChar != '\b')

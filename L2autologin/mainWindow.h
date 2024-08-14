@@ -2,6 +2,7 @@
 #include <msclr\marshal_cppstd.h>
 #include <tlhelp32.h>
 #include <windows.h>
+#include <cliext/vector>
 
 #if defined _WIN64
 #pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='amd64' publicKeyToken='6595b64144ccf1df' language='*'\"")
@@ -85,6 +86,32 @@ namespace L2autologin {
 
 		void btnMoveDown_Click(Object^ sender, EventArgs^ e) {
 			MoveItem(accountNames, 1); // 1 для сдвига вниз
+		}
+
+
+		static void MoveSelectedItemsUp(CheckedListBox^ listBox) {
+			// Список для хранения выделенных элементов
+			cliext::vector<Object^> selectedItems;
+			cliext::vector<bool> checkedStates;
+
+			// Проходим по всем элементам и собираем выделенные элементы
+			for (int i = 0; i < listBox->Items->Count; i++) {
+				if (listBox->GetItemChecked(i)) {
+					selectedItems.push_back(listBox->Items[i]);
+					checkedStates.push_back(true); // Сохраняем состояние checked
+				}
+			}
+
+			// Удаляем выделенные элементы из оригинального списка
+			for (int i = selectedItems.size() - 1; i >= 0; i--) {
+				listBox->Items->Remove(selectedItems[i]);
+			}
+
+			// Вставляем выделенные элементы в начало списка
+			for (int i = 0; i < selectedItems.size(); i++) {
+				listBox->Items->Insert(i, selectedItems[i]);
+				listBox->SetItemChecked(i, checkedStates[i]); // Восстанавливаем состояние checked
+			}
 		}
 
 	protected:
