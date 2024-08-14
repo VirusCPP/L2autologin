@@ -1,6 +1,7 @@
 
 
-![Screenshot_529](https://github.com/VirusCPP/L2autologin/assets/164004355/4594f754-41cc-44c5-b122-079524e52b9b)
+![Screenshot_563](https://github.com/user-attachments/assets/3b86d54f-47a2-445f-aa15-25fb0dd4af4d)
+
 
 
 DOWNLOAD
