@@ -33,8 +33,7 @@ namespace L2autologin {
 		}
 	}
 
-
-	void mainWindow::MoveItem(CheckedListBox ^ listBox, int direction) {
+	void mainWindow::MoveItem(CheckedListBox^ listBox, int direction) {
 		// Получаем индекс выделенного элемента
 		int index = listBox->SelectedIndex;
 
@@ -53,12 +52,17 @@ namespace L2autologin {
 		Object^ selectedItem = listBox->Items[index];
 		bool isChecked = listBox->GetItemChecked(index);
 
-		// Удаление текущего элемента
-		listBox->Items->RemoveAt(index);
+		// Сохранение соответствующего объекта account^ из accArray
+		account^ selectedAccount = account::accArray[index];
 
-		// Вставка элемента на новую позицию
+		// Удаление текущего элемента из списка и accArray
+		listBox->Items->RemoveAt(index);
+		account::accArray->RemoveAt(index);
+
+		// Вставка элемента и соответствующего объекта account^ на новую позицию
 		listBox->Items->Insert(newIndex, selectedItem);
 		listBox->SetItemChecked(newIndex, isChecked);
+		account::accArray->Insert(newIndex, selectedAccount);
 
 		// Установка нового выделенного элемента
 		listBox->SelectedIndex = newIndex;
