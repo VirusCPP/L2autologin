@@ -57,7 +57,7 @@ namespace L2autologin {
 						String^ indices = "";
 						for (int i = 0; i < account::accArray->Count; i++) {
 							if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
-								indices += i.ToString() + " ";
+								indices += accountNames->Items[i]->ToString() + " ";
 							}
 						}
 						fileLines->Add(indices->Trim());
