@@ -3,7 +3,7 @@
 
 namespace L2autologin {
 
-	void mainWindow::MoveSelectedItemsUp(CheckedListBox^ listBox) {
+	void mainWindow::moveSelectedItemsUp(CheckedListBox^ listBox) {
 		// Список для хранения выделенных элементов
 		cliext::vector<Object^> selectedItems;
 		cliext::vector<account^> selectedAccounts;
@@ -33,7 +33,7 @@ namespace L2autologin {
 		}
 	}
 
-	void mainWindow::MoveItem(CheckedListBox^ listBox, int direction) {
+	void mainWindow::moveItem(CheckedListBox^ listBox, int direction) {
 		// Получаем индекс выделенного элемента
 		int index = listBox->SelectedIndex;
 
@@ -66,6 +66,7 @@ namespace L2autologin {
 
 		// Установка нового выделенного элемента
 		listBox->SelectedIndex = newIndex;
+		saveData();
 	}
 
 	void mainWindow::textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e)

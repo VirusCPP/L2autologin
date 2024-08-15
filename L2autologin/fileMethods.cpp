@@ -139,7 +139,7 @@ namespace L2autologin {
 		finally {
 			sr->Close();
 		}
-		MoveSelectedItemsUp(accountNames);
+		moveSelectedItemsUp(accountNames);
 	
 	}
 
