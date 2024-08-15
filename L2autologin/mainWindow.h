@@ -35,6 +35,7 @@ namespace L2autologin {
 			loadData();
 			checkPathStatus();
 		}
+
 		void moveItem(CheckedListBox^ listBox, int direction);
 		static int _delay;
 		static mainWindow^ mainWindowInstance;
@@ -80,17 +81,8 @@ namespace L2autologin {
 		static String^ _profileFileName = "Profile.ini";
 		static String^ Path;
 		static void moveSelectedItemsUp(CheckedListBox^ listBox);
-		
-		void btnMoveUp_Click(Object^ sender, EventArgs^ e) {
-			moveItem(accountNames, -1); // -1 для сдвига вверх
-		}
-
-		void btnMoveDown_Click(Object^ sender, EventArgs^ e) {
-			moveItem(accountNames, 1); // 1 для сдвига вниз
-		}
-
-
-		
+		void btnMoveUp_Click(Object^ sender, EventArgs^ e);
+		void btnMoveDown_Click(Object^ sender, EventArgs^ e);
 
 	protected:
 		~mainWindow()

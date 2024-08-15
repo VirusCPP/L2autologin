@@ -3,6 +3,14 @@
 
 namespace L2autologin {
 
+	void mainWindow::btnMoveUp_Click(Object^ sender, EventArgs^ e) {
+		moveItem(accountNames, -1); // -1 для сдвига вверх
+	}
+
+	void mainWindow::btnMoveDown_Click(Object^ sender, EventArgs^ e) {
+		moveItem(accountNames, 1); // 1 для сдвига вниз
+	}
+
 	void mainWindow::addPathButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		chooseFolder();
 	}
