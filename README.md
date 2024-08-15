@@ -6,6 +6,7 @@
 
 DOWNLOAD
 
-[L2AutoLogin.zip](https://github.com/user-attachments/files/16618759/L2AutoLogin.zip)
+[L2AutoLogin.zip](https://github.com/user-attachments/files/16621942/L2AutoLogin.zip)
+
 
 
