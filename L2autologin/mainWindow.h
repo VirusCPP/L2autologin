@@ -36,38 +36,47 @@ namespace L2autologin {
 			checkPathStatus();
 		}
 
-		void moveItem(CheckedListBox^ listBox, int direction);
-		static int _delay;
+		static String^ dataFileName = "Data.bin";
+		static String^ profileFileName = "Profile.ini";
+		static String^ Path;
+		static int delay;
+		static String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv);
+		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
 		static mainWindow^ mainWindowInstance;
-		System::Windows::Forms::Button^ button1;
-		System::Windows::Forms::Button^ button2;
-		static String^ _version = L"0.9";
+		static String^ version = L"1.0";
+
 		void removeAccButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void addAccButton_Click(System::Object^ sender, System::EventArgs^ e);
-		static void addAccount(String^ name, String^ login, String^ password);
-		static void removeAccount();
-		static void removeProfile();
+		void textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e);
+		void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
+		void InitializeComponent();
 		void addPathButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void startButton_Click(System::Object^ sender, System::EventArgs^ e);
-		static bool isAccountUnique(String^ name, String^ login);
-		static bool isProfileUnique(String^ profileName);
 		void removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void showProtocol_Click(System::Object^ sender, System::EventArgs^ e);
 		void mainWindow_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e);
+		void btnMoveUp_Click(Object^ sender, EventArgs^ e);
+		void btnMoveDown_Click(Object^ sender, EventArgs^ e);
+		void moveItem(CheckedListBox^ listBox, int direction);
+		static bool isAccountUnique(String^ name, String^ login);
+		static bool isProfileUnique(String^ profileName);
+		static void moveSelectedItemsUp(CheckedListBox^ listBox);
+		static void addAccount(String^ name, String^ login, String^ password);
+		static void removeAccount();
+		static void removeProfile();
 		static void launchApp(Object^ state);
 		static void saveData();
 		static void loadData();
 		static void checkPathStatus();
-		void InitializeComponent();
 		static void chooseFolder();
 		static void saveProfile();
 		static void loadProfile();
 		static void showLoginPassword();
-		void textBox_KeyPress(Object^ sender, KeyPressEventArgs^ e);
-		static String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv);
-		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
+		
+		System::Windows::Forms::Button^ button1;
+		System::Windows::Forms::Button^ button2;
 		static System::Windows::Forms::FolderBrowserDialog^ folderBrowserDialog;
 		static System::Windows::Forms::Button^ startButton;
 		static System::Windows::Forms::Button^ protocolButton;
@@ -76,14 +85,7 @@ namespace L2autologin {
 		static System::Windows::Forms::CheckedListBox^ accountNames;
 		static System::Windows::Forms::ComboBox^ profileComboBox;
 		static System::Windows::Forms::ProgressBar^ progressBar1;
-		void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
-		static String^ _dataFileName = "Data.bin";
-		static String^ _profileFileName = "Profile.ini";
-		static String^ Path;
-		static void moveSelectedItemsUp(CheckedListBox^ listBox);
-		void btnMoveUp_Click(Object^ sender, EventArgs^ e);
-		void btnMoveDown_Click(Object^ sender, EventArgs^ e);
-
+		
 	protected:
 		~mainWindow()
 		{
@@ -94,8 +96,6 @@ namespace L2autologin {
 		}
 
 	private: 
-		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
-		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
 		System::Windows::Forms::Label^ label1;
 		System::Windows::Forms::Label^ label2;
 		System::Windows::Forms::Button^ saveProfileButton;
@@ -105,5 +105,7 @@ namespace L2autologin {
 		System::Windows::Forms::Button^ removeButton;
 		System::Windows::Forms::Button^ addButton;
 		System::ComponentModel::Container^ components;
+		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
+		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
 	};
 }

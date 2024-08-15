@@ -3,15 +3,15 @@
 
 namespace L2autologin {
 	void mainWindow::saveProfile() {
-		if (!File::Exists(_profileFileName)) {
-			StreamWriter^ sw = gcnew StreamWriter(_profileFileName, true);
+		if (!File::Exists(profileFileName)) {
+			StreamWriter^ sw = gcnew StreamWriter(profileFileName, true);
 			sw->Close();
 		}
 		if (accountNames->CheckedItems->Count != 0) {
 			String^ profileText = profileComboBox->Text;
 
 			if (profileText != "") {
-				StreamReader^ sr = gcnew StreamReader(_profileFileName);
+				StreamReader^ sr = gcnew StreamReader(profileFileName);
 				List<String^>^ fileLines = gcnew List<String^>();
 
 				try {
@@ -72,7 +72,7 @@ namespace L2autologin {
 					sr->Close();
 				}
 				// Перезаписываем файл
-				StreamWriter^ sw = gcnew StreamWriter(_profileFileName, false);
+				StreamWriter^ sw = gcnew StreamWriter(profileFileName, false);
 
 				try {
 					for each (String ^ fileLine in fileLines) {
@@ -90,10 +90,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::loadProfile() {
-		/*profileComboBox->Items->Clear();
-		accountNames->Items->Clear();
-		loadData();*/
-		if (!File::Exists(_profileFileName)) {
+		if (!File::Exists(profileFileName)) {
 			return;
 		}
 		if (accountNames->CheckedItems->Count != 0) {
@@ -101,7 +98,7 @@ namespace L2autologin {
 				accountNames->SetItemCheckState(i, CheckState::Unchecked);
 			}
 		}
-		StreamReader^ sr = gcnew StreamReader(_profileFileName);
+		StreamReader^ sr = gcnew StreamReader(profileFileName);
 		try {
 			String^ line;
 			while ((line = sr->ReadLine()) != nullptr) {
@@ -144,7 +141,7 @@ namespace L2autologin {
 	}
 
 	void mainWindow::saveData() {
-		StreamWriter^ sw = gcnew StreamWriter(_dataFileName, false);
+		StreamWriter^ sw = gcnew StreamWriter(dataFileName, false);
 		sw->WriteLine(EncryptData("[Path] = " + Path, key, iv));
 		try {
 			for (int i = 0; i < account::accArray->Count; i++) {
@@ -168,11 +165,11 @@ namespace L2autologin {
 
 
 	void mainWindow::loadData() {
-		if (!File::Exists(_dataFileName)) {
+		if (!File::Exists(dataFileName)) {
 			return;
 		}
 
-		StreamReader^ sr = gcnew StreamReader(_dataFileName);
+		StreamReader^ sr = gcnew StreamReader(dataFileName);
 
 		try {
 			String^ line;

@@ -202,7 +202,7 @@ namespace L2autologin {
 	void mainWindow::launchApp(Object^ state) {
 		progressBar1->Value = 0;
 		Process^ proc = gcnew Process();
-		Int32::TryParse(DelayBox->Text, _delay);
+		Int32::TryParse(DelayBox->Text, delay);
 		proc->StartInfo->FileName = Path + "\\L2.exe";
 		try {
 			int progress = accountNames->CheckedItems->Count;
@@ -214,7 +214,7 @@ namespace L2autologin {
 						String^ parm2 = account::accArray[i]->Password;
 						proc->StartInfo->Arguments = "account=" + parm1 + " " + "password=" + parm2;
 						proc->Start();
-						System::Threading::Thread::Sleep(_delay);
+						System::Threading::Thread::Sleep(delay);
 						progressBar1->Increment(100 / progress);
 					}
 				}
