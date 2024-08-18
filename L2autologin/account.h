@@ -14,6 +14,6 @@ namespace L2autologin {
 			Password = password;
 		}
 
-		static List<account^>^ accArray = gcnew List<account^>(1);
+		static List<account^>^ accArray = gcnew List<account^>();
 	};
 }
