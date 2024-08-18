@@ -14,7 +14,7 @@ namespace L2autologin {
 			if (listBox->GetItemChecked(i)) {
 				selectedItems.push_back(listBox->Items[i]);
 				selectedAccounts.push_back(account::accArray[i]);
-				checkedStates.push_back(true); // Сохраняем состояние checked
+				checkedStates.push_back(true); // Save the checked state
 			}
 		}
 
