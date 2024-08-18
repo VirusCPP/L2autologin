@@ -14,6 +14,8 @@ namespace L2autologin {
 	public ref class addAccountForm : public System::Windows::Forms::Form
 	{
 	public:
+		void okButton_Click(System::Object^ sender, System::EventArgs^ e);
+		void cancelButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void InitializeComponent();
 		static void openAddAccountForm(mainWindow^ mainWin);
 		addAccountForm(void)
@@ -37,23 +39,5 @@ namespace L2autologin {
 				delete components;
 			}
 		}
-
-	private:
-
-#pragma region Windows Form Designer generated code
-		   
-#pragma endregion
-
-	void okButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (nameTextBox->Text != "" && loginTextBox->Text != "" && passwordTextBox->Text != "") {
-			mainWindow::addAccount(nameTextBox->Text, loginTextBox->Text, passwordTextBox->Text);
-			Close();
-		}
-		else
-			MessageBox::Show("Заполнены не все поля", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
-}
-	void cancelButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	Close();
-}
-};
+	};
 }
