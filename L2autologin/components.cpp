@@ -131,7 +131,7 @@ namespace L2autologin {
 		this->DelayBox->Size = System::Drawing::Size(52, 20);
 		this->DelayBox->TabIndex = 10;
 		this->DelayBox->Text = L"5000";
-		this->DelayBox->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &mainWindow::textBox_KeyPress);
+		this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &mainWindow::mainWindow_KeyDown);
 		// 
 		// label2
 		// 
@@ -282,7 +282,6 @@ namespace L2autologin {
 		this->Name = L"mainWindow";
 		this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 		this->Text = L"L2 AutoLogin by VirusCPP";
-		this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &mainWindow::mainWindow_KeyPress);
 		this->ResumeLayout(false);
 		this->PerformLayout();
 

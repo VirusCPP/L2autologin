@@ -54,7 +54,7 @@ namespace L2autologin {
 		void saveProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void loadProfileButton_Click(System::Object^ sender, System::EventArgs^ e);
 		void showProtocol_Click(System::Object^ sender, System::EventArgs^ e);
-		void mainWindow_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e);
+		void mainWindow_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 		void btnMoveUp_Click(Object^ sender, EventArgs^ e);
 		void btnMoveDown_Click(Object^ sender, EventArgs^ e);
 		void moveItem(CheckedListBox^ listBox, int direction);

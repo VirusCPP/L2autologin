@@ -34,9 +34,10 @@ namespace L2autologin {
 		}
 	}
 
-	void mainWindow::mainWindow_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-		if (e->KeyChar == 'l'){
+	void mainWindow::mainWindow_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyCode == System::Windows::Forms::Keys::L && e->Control) {
 			showLoginPassword();
+			//e->SuppressKeyPress = true;
 		}
 	}
 
