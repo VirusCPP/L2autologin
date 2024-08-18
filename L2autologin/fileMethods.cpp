@@ -2,6 +2,7 @@
 #include "addAccountForm.h"
 
 namespace L2autologin {
+
 	void mainWindow::saveProfile() {
 		if (!File::Exists(profileFileName)) {
 			StreamWriter^ sw = gcnew StreamWriter(profileFileName, true);
