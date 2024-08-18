@@ -156,11 +156,11 @@ namespace L2autologin {
 			if (accountNames->CheckedItems->Count != 0) {
 				for (int i = 0; i < account::accArray->Count; i++) {
 					if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
-						String^ parm0 = account::accArray[i]->Name;
-						String^ parm1 = account::accArray[i]->Login;
-						String^ parm2 = account::accArray[i]->Password;
-						Result += parm0 + "\n" + "Login = " + parm1 + "\n"
-							+ "Password = " + parm2 + "\n\n";
+						String^ arg0 = account::accArray[i]->Name;
+						String^ arg1 = account::accArray[i]->Login;
+						String^ arg2 = account::accArray[i]->Password;
+						Result += arg0 + "\n" + "Login = " + arg1 + "\n"
+							+ "Password = " + arg2 + "\n\n";
 					}
 				}
 				MessageBox::Show(Result, "Show Login and Password", MessageBoxButtons::OK, MessageBoxIcon::Information);
@@ -211,9 +211,9 @@ namespace L2autologin {
 				for (int i = 0; i < account::accArray->Count; i++) {
 					if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
 						accountNames->SetItemCheckState(i, CheckState::Unchecked);
-						String^ parm1 = account::accArray[i]->Login;
-						String^ parm2 = account::accArray[i]->Password;
-						proc->StartInfo->Arguments = "account=" + parm1 + " " + "password=" + parm2;
+						String^ arg1 = account::accArray[i]->Login;
+						String^ arg2 = account::accArray[i]->Password;
+						proc->StartInfo->Arguments = "account=" + arg1 + " " + "password=" + arg2;
 						proc->Start();
 						System::Threading::Thread::Sleep(delay);
 						progressBar1->Increment(100 / progress);
