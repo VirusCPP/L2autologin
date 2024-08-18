@@ -94,6 +94,7 @@ namespace L2autologin {
 				MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 
+
 	void mainWindow::removeAccount() {
 		if (accountNames->CheckedItems->Count == 0) {
 			return;
