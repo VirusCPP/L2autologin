@@ -9,7 +9,7 @@ namespace L2autologin {
 		cliext::vector<account^> selectedAccounts;
 		cliext::vector<bool> checkedStates;
 
-		// Go through all the elements and collect the selected elements
+		// Iterate over all elements and collect the selected elements
 		for (int i = 0; i < listBox->Items->Count; i++) {
 			if (listBox->GetItemChecked(i)) {
 				selectedItems.push_back(listBox->Items[i]);
