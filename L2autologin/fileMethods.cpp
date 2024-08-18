@@ -22,10 +22,10 @@ namespace L2autologin {
 						if (line->StartsWith(profileText)) {
 							profileFound = true;
 
-							// Добавляем строку профиля
+							// Adding a profile line
 							fileLines->Add(profileText);
 
-							// Создаем строку для индексов
+							// Create a row for indexes
 							String^ indices = "";
 							for (int i = 0; i < account::accArray->Count; i++) {
 								if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
@@ -34,14 +34,14 @@ namespace L2autologin {
 							}
 							fileLines->Add(indices->Trim());
 
-							// Добавляем значение из DelayBox
+							// Adding a value from DelayBox
 							fileLines->Add(DelayBox->Text);
 
-							// Пропускаем старую строку индексов и DelayBox
-							sr->ReadLine(); // Пропускаем строку индексов
-							sr->ReadLine(); // Пропускаем старую строку DelayBox
+							// Skipping the old index line and DelayBox
+							sr->ReadLine(); // Skipping the index line
+							sr->ReadLine(); // Skipping the old DelayBox line
 
-							// Переходим к следующей строке, чтобы не добавлять старую информацию
+							// Move on to the next line so as not to add old information.
 							continue;
 						}
 						else {
@@ -50,10 +50,10 @@ namespace L2autologin {
 					}
 
 					if (!profileFound) {
-						// Добавляем новый профиль, если он не был найден
+						// Add a new profile if it was not found
 						fileLines->Add(profileText);
 
-						// Создаем строку для индексов
+						// Create a row for indexes
 						String^ indices = "";
 						for (int i = 0; i < account::accArray->Count; i++) {
 							if (accountNames->GetItemCheckState(i) == CheckState::Checked) {
@@ -62,16 +62,16 @@ namespace L2autologin {
 						}
 						fileLines->Add(indices->Trim());
 
-						// Добавляем значение из DelayBox
+						// Adding a value from DelayBox
 						fileLines->Add(DelayBox->Text);
-						// Добавляем пустую строку для перехода на новую строку
+						// Add a blank line to start a new line
 						fileLines->Add("");
 					}
 				}
 				finally {
 					sr->Close();
 				}
-				// Перезаписываем файл
+				// Overwriting the file
 				StreamWriter^ sw = gcnew StreamWriter(profileFileName, false);
 
 				try {
@@ -108,14 +108,14 @@ namespace L2autologin {
 						array<String^>^ numberStrings =
 							numbersLine->Split(gcnew array<wchar_t>{ ' ' }, StringSplitOptions::RemoveEmptyEntries);
 						for each (String ^ numStr in numberStrings) {
-							// Перебираем все элементы в CheckedListBox
+							// Iterate over all elements in CheckedListBox
 							for (int i = 0; i < accountNames->Items->Count; i++) {
 								String^ itemName = accountNames->Items[i]->ToString();
-								// Сравниваем имя элемента с текущей строкой из numbersLine
+								// Compare the element name with the current line from numbersLine
 								if (itemName == numStr) {
-									// Если совпадает, отмечаем этот элемент
+									// If it matches, we mark this element
 									accountNames->SetItemCheckState(i, CheckState::Checked);
-									break; // Прекращаем поиск, так как элемент найден
+									break; // Stopping the search because the element was found
 								}
 							}
 						}
@@ -178,23 +178,23 @@ namespace L2autologin {
 					String^ decryptedLine = DecryptData(line, key, iv);
 
 					if (decryptedLine->StartsWith("[Path] = ")) {
-						String^ path = decryptedLine->Substring(9); // Извлекаем путь, пропуская "[Path] = "
+						String^ path = decryptedLine->Substring(9); // Extract the path by skipping "[Path] = "
 						Path = path;
 						PathBox->Text = Path;
 					}
 					else if (decryptedLine->StartsWith("[Account Name] = ")) {
-						String^ name = decryptedLine->Substring(17); // Извлекаем имя аккаунта
+						String^ name = decryptedLine->Substring(17); // Extracting the account name
 						String^ encryptedLogin = sr->ReadLine();
 						if (!String::IsNullOrEmpty(encryptedLogin)) {
 							String^ decryptedLogin = DecryptData(encryptedLogin, key, iv);
-							String^ login = decryptedLogin->Substring(18); // Извлекаем логин, пропуская "[Account Login] = "
+							String^ login = decryptedLogin->Substring(18); // Extract the login, skipping "[Account Login] = "
 
 							String^ encryptedPassword = sr->ReadLine();
 							if (!String::IsNullOrEmpty(encryptedPassword)) {
 								String^ decryptedPassword = DecryptData(encryptedPassword, key, iv);
-								String^ password = decryptedPassword->Substring(21); // Извлекаем пароль, пропуская "[Account Password] = "
+								String^ password = decryptedPassword->Substring(21); // Extract the password, skipping "[Account Password] = "
 
-								sr->ReadLine(); // Пропускаем пустую строку, разделяющую записи аккаунтов
+								sr->ReadLine(); // Skip the blank line separating the account entries
 
 								account^ newAccount = gcnew account(name, login, password);
 								account::accArray->Add(newAccount);
@@ -203,7 +203,7 @@ namespace L2autologin {
 						}
 					}
 					else if (decryptedLine->StartsWith("[Profile] = ")) {
-						String^ profile = decryptedLine->Substring(12); // Извлекаем профиль, пропуская "[Profile] = "
+						String^ profile = decryptedLine->Substring(12); // Extract the profile, skipping "[Profile] = "
 						profileComboBox->Items->Add({ profile });
 					}
 				}

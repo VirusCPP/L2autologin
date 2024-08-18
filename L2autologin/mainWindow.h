@@ -105,7 +105,7 @@ namespace L2autologin {
 		System::Windows::Forms::Button^ removeButton;
 		System::Windows::Forms::Button^ addButton;
 		System::ComponentModel::Container^ components;
-		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Замените на ваш ключ
-		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Замените на ваш IV
+		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Replace with your key
+		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Replace with your IV
 	};
 }

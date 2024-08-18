@@ -4,12 +4,12 @@
 namespace L2autologin {
 
 	void mainWindow::moveSelectedItemsUp(CheckedListBox^ listBox) {
-		// Список для хранения выделенных элементов
+		// List for storing selected items
 		cliext::vector<Object^> selectedItems;
 		cliext::vector<account^> selectedAccounts;
 		cliext::vector<bool> checkedStates;
 
-		// Проходим по всем элементам и собираем выделенные элементы
+		// Go through all the elements and collect the selected elements
 		for (int i = 0; i < listBox->Items->Count; i++) {
 			if (listBox->GetItemChecked(i)) {
 				selectedItems.push_back(listBox->Items[i]);
@@ -18,53 +18,53 @@ namespace L2autologin {
 			}
 		}
 
-		// Удаляем выделенные элементы из оригинального списка и из accArray
+		// Remove the selected elements from the original list and from accArray
 		for (int i = selectedItems.size() - 1; i >= 0; i--) {
 			int index = listBox->Items->IndexOf(selectedItems[i]);
 			listBox->Items->RemoveAt(index);
 			account::accArray->RemoveAt(index);
 		}
 
-		// Вставляем выделенные элементы в начало списка
+		// Insert the selected elements to the beginning of the list
 		for (int i = 0; i < selectedItems.size(); i++) {
 			listBox->Items->Insert(i, selectedItems[i]);
-			listBox->SetItemChecked(i, checkedStates[i]); // Восстанавливаем состояние checked
+			listBox->SetItemChecked(i, checkedStates[i]); // Restoring the checked state
 			account::accArray->Insert(i, selectedAccounts[i]);
 		}
 	}
 
 	void mainWindow::moveItem(CheckedListBox^ listBox, int direction) {
-		// Получаем индекс выделенного элемента
+		// Get the index of the selected element
 		int index = listBox->SelectedIndex;
 
-		// Если нет выделенного элемента или индекс невалидный
+		// If there is no selected element or the index is invalid
 		if (index < 0 || index >= listBox->Items->Count)
 			return;
 
-		// Новый индекс после перемещения
+		// New index after move
 		int newIndex = index + direction;
 
-		// Проверка на выход за границы списка
+		// Checking for list out of bounds
 		if (newIndex < 0 || newIndex >= listBox->Items->Count)
 			return;
 
-		// Сохранение текущего элемента
+		// Save current element
 		Object^ selectedItem = listBox->Items[index];
 		bool isChecked = listBox->GetItemChecked(index);
 
-		// Сохранение соответствующего объекта account^ из accArray
+		// Save the corresponding account^ object from accArray
 		account^ selectedAccount = account::accArray[index];
 
-		// Удаление текущего элемента из списка и accArray
+		// Remove current element from list and accArray
 		listBox->Items->RemoveAt(index);
 		account::accArray->RemoveAt(index);
 
-		// Вставка элемента и соответствующего объекта account^ на новую позицию
+		// Insert an element and the corresponding account^ object at a new position
 		listBox->Items->Insert(newIndex, selectedItem);
 		listBox->SetItemChecked(newIndex, isChecked);
 		account::accArray->Insert(newIndex, selectedAccount);
 
-		// Установка нового выделенного элемента
+		// Setting a new selected item
 		listBox->SelectedIndex = newIndex;
 		saveData();
 	}

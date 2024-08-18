@@ -8,7 +8,7 @@ namespace L2autologin {
 	{
 		Application::EnableVisualStyles();
 		Application::SetCompatibleTextRenderingDefault(false);
-		mainWindow::mainWindowInstance = gcnew mainWindow(); // создаем экземпляр mainWindow
+		mainWindow::mainWindowInstance = gcnew mainWindow();
 		mainWindow::mainWindowInstance->TopMost = false;
 		Application::Run(mainWindow::mainWindowInstance);
 	}
