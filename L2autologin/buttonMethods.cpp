@@ -55,6 +55,7 @@ namespace L2autologin {
 	void mainWindow::removeProfileButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		removeProfile();
 	}
+
 	void mainWindow::showProtocol_Click(System::Object^ sender, System::EventArgs^ e) {
 		Process^ proc = gcnew Process();
 		try {
@@ -67,6 +68,7 @@ namespace L2autologin {
 			MessageBox::Show("Ошибка запуска клиента игры", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
+
 	void addAccountForm::okButton_Click(System::Object ^ sender, System::EventArgs ^ e) {
 		if (nameTextBox->Text != "" && loginTextBox->Text != "" && passwordTextBox->Text != "") {
 			mainWindow::addAccount(nameTextBox->Text, loginTextBox->Text, passwordTextBox->Text);
@@ -75,6 +77,7 @@ namespace L2autologin {
 		else
 			MessageBox::Show("Заполнены не все поля", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
+
 	void addAccountForm::cancelButton_Click(System::Object ^ sender, System::EventArgs ^ e) {
 		Close();
 	}
