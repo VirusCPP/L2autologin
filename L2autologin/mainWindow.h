@@ -40,8 +40,6 @@ namespace L2autologin {
 		static String^ profileFileName = "Profile.ini";
 		static String^ Path;
 		static int delay;
-		static String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv);
-		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
 		static mainWindow^ mainWindowInstance;
 		static String^ version = L"1.0";
 
@@ -74,6 +72,8 @@ namespace L2autologin {
 		static void saveProfile();
 		static void loadProfile();
 		static void showLoginPassword();
+		static String^ EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv);
+		static String^ DecryptData(String^ encryptedText, array<Byte>^ key, array<Byte>^ iv);
 		
 		System::Windows::Forms::Button^ button1;
 		System::Windows::Forms::Button^ button2;
