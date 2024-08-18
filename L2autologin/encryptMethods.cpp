@@ -3,6 +3,7 @@
 
 using namespace System::Security::Cryptography;
 namespace L2autologin {
+
 	String^ mainWindow::EncryptData(String^ plainText, array<Byte>^ key, array<Byte>^ iv) {
 		Aes^ aes = Aes::Create();
 		aes->Key = key;
@@ -33,4 +34,5 @@ namespace L2autologin {
 		StreamReader^ reader = gcnew StreamReader(cryptoStream);
 		return reader->ReadToEnd();
 	}
+
 }

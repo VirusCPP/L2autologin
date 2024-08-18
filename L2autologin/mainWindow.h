@@ -108,4 +108,5 @@ namespace L2autologin {
 		static array<Byte>^ key = Encoding::UTF8->GetBytes("1215241215241215"); // Replace with your key
 		static array<Byte>^ iv = Encoding::UTF8->GetBytes("8765432187654321"); // Replace with your IV
 	};
+
 }
